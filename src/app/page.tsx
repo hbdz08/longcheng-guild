@@ -22,30 +22,33 @@ export default function HomePage() {
       {/* 🎬 Hero 区域 */}
       <Section
         id="hero"
-        fullHeight
-        className="relative overflow-hidden bg-gradient-to-b from-brand-dark via-gray-900 to-brand-dark pt-20 md:pt-24"
+       
+        className="relative overflow-hidden aspect-[9/16] md:aspect-[16/9]  pt-20 md:pt-24"
       >
         {/* 背景装饰 */}
         <div className="absolute inset-0 -z-10" >
           {/* Mobile Image: 手机显示，平板隐藏 */}
           <div className="block md:hidden relative w-full h-full">
              <Image
-               src="/images/mobile/tv.png"
+               src="https://image.xixingwangluokeji.cn/mobile/tv.png"
                alt="Hero Background Mobile"
                fill  
                priority  
+               
                className="object-cover object-top" // 关键：保持比例填满，重心靠上(避免裁掉头)
+             
              />
           </div>
 
           {/* Desktop Image: 手机隐藏，平板显示 */}
           <div className="hidden md:block relative w-full h-full">
              <Image
-               src="/images/desktop/tv@2x.png"
+               src="https://image.xixingwangluokeji.cn/desktop/tv@2x.png"
                alt="Hero Background Desktop"
                fill // 自动填满父容器
                priority
                className="object-cover object-center" // 关键：保持比例填满，居中对齐
+           
              />
           </div>
         </div>
