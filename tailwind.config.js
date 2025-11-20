@@ -14,6 +14,7 @@ module.exports = {
           dragon: '#3b82f6',
           game: '#ec4899',
           dark: '#0a0a0a',
+          whith: '#fefefe'
         },
       },
 
@@ -25,7 +26,7 @@ module.exports = {
 
       // ✨ 渐变背景
       backgroundImage: {
-        'gradient-dragon': 'linear-gradient(135deg, #3b82f6 0%, #d97706 100%)',
+        'gradient-dragon': 'linear-gradient(135deg,#fefefe 0%, #d97706 100%)',
         'gradient-game': 'linear-gradient(135deg, #ec4899 0%, #3b82f6 100%)',
         'gradient-gold': 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)',
         'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',

@@ -53,7 +53,7 @@ export function GameButton({
         // 颜色变体
         variant === 'gold' && cn(
           'bg-gradient-gold text-white shadow-lg',
-          'hover:shadow-glow-gold hover:scale-105',
+         
           'active:scale-95'
         ),
         variant === 'dragon' && cn(
@@ -79,11 +79,7 @@ export function GameButton({
       )}
     >
       {/* 闪光效果 */}
-      {!disabled && variant !== 'ghost' && variant !== 'outline' && (
-        <span className="absolute inset-0">
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer" />
-        </span>
-      )}
+     
 
       {/* 内容 */}
       <span className="relative z-10">{children}</span>
