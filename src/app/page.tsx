@@ -23,7 +23,7 @@ export default function HomePage() {
       <Section
         id="hero"
        
-        className="relative overflow-hidden aspect-[9/16] md:aspect-[16/9]  pt-20 md:pt-24"
+        className="relative overflow-hidden aspect-[9/16] md:aspect-[16/9] min-h-[500px] md:min-h-[800px] pt-20 md:pt-24"
       >
         {/* 背景装饰 */}
         <div className="absolute inset-0 -z-10" >
@@ -35,7 +35,7 @@ export default function HomePage() {
                fill  
                priority  
                
-               className="object-cover object-top" // 关键：保持比例填满，重心靠上(避免裁掉头)
+               className="object-contain object-top" // 关键：保持比例填满，重心靠上(避免裁掉头)
              
              />
           </div>
@@ -55,15 +55,13 @@ export default function HomePage() {
  
 
         {/* 内容 */}
-        <Container size="lg" className="relative z-10 text-center">
+        <Container size="lg" className="relative z-0 text-center">
           {/* 主标题 */}
-          <GameTitle variant="dragon" size="2xl" as="h1" glow>
-            龙成游戏公会
-          </GameTitle>
+        
 
-          <GameSubtitle>
+          {/* <GameSubtitle>
             成立于2014年 · 服务<span className="text-brand-gold font-bold">100万+</span>玩家 · 好游戏的搬运工
-          </GameSubtitle>
+          </GameSubtitle> */}
 
           {/* CTA 按钮 */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
@@ -85,7 +83,7 @@ export default function HomePage() {
           </div>
 
           {/* 关键数据 */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
+          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
             {[
               { label: '成立时间', value: '2014年', icon: '🏆' },
               { label: '服务玩家', value: '100万+', icon: '👥' },
@@ -103,7 +101,7 @@ export default function HomePage() {
                 <div className="text-gray-400 text-sm">{stat.label}</div>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* 底部标语 */}
           <p className="mt-16 text-xl md:text-2xl text-brand-gold font-bold animate-pulse">
