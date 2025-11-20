@@ -47,61 +47,7 @@ export function Footer() {
 
       <Container size="lg" className="relative">
         {/* 主要内容 */}
-        <div className="py-12 md:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-            {/* 公会信息 */}
-            <div className="lg:col-span-1">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-dragon flex items-center justify-center font-game font-bold text-white text-2xl shadow-glow-blue">
-                  龙
-                </div>
-                <div>
-                  <div className="text-gradient-dragon font-game font-bold text-xl">
-                    龙成公会
-                  </div>
-                  <div className="text-gray-500 text-xs">SINCE 2014</div>
-                </div>
-              </div>
-
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                好游戏的搬运工,专注精品游戏宣发10年,服务100万+玩家。跟对公会,游戏才真正好玩!
-              </p>
-
-              {/* 社交链接 */}
-              <div className="flex gap-3">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    className="w-10 h-10 rounded-full glass flex items-center justify-center text-xl hover:bg-white/10 transition-all hover:scale-110"
-                    title={social.label}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* 链接分组 */}
-            {footerLinks.map((group) => (
-              <div key={group.title}>
-                <h3 className="text-white font-bold mb-4">{group.title}</h3>
-                <ul className="space-y-2">
-                  {group.links.map((link) => (
-                    <li key={link.label}>
-                      <a
-                        href={link.href}
-                        className="text-gray-400 hover:text-brand-gold transition-colors text-sm"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
+        
 
         {/* 分隔线 */}
         <div className="border-t border-white/10" />
