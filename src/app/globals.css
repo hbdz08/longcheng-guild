@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🎨 全局样式 */
+@layer base {
+  :root {
+    --foreground: 255 255 255;
+    --background: 10 10 10;
+  }
+
+  * {
+    @apply border-gray-800;
+  }
+
+  body {
+    @apply bg-brand-dark text-white antialiased;
+    @apply selection:bg-brand-gold selection:text-white;
+  }
+
+  /* 平滑滚动 */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* 🎯 自定义工具类 */
+@layer utilities {
+  /* 渐变文字 */
+  .text-gradient-dragon {
+    @apply bg-gradient-dragon bg-clip-text text-transparent;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-gold bg-clip-text text-transparent;
+  }
+
+  .text-gradient-game {
+    @apply bg-gradient-game bg-clip-text text-transparent;
+  }
+
+  /* 发光效果 */
+  .glow-gold {
+    @apply shadow-glow-gold;
+  }
+
+  .glow-blue {
+    @apply shadow-glow-blue;
+  }
+
+  /* 玻璃态效果 */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+}
