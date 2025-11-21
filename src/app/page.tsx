@@ -24,7 +24,7 @@ export default function HomePage() {
         <Section
           id="hero"
           className={cn(
-            "relative overflow-hidden bg-brand-dark",
+            "relative overflow-hidden  ",
             "aspect-[9/16] md:aspect-[16/9]", 
             
           )}
@@ -37,7 +37,7 @@ export default function HomePage() {
                 alt="Hero Mobile"
                 fill
                 priority
-                className="object-contain object-top"
+                className=" object-contain object-top"
                 unoptimized
               />
             </div>
@@ -93,47 +93,65 @@ export default function HomePage() {
             </div>
           </div>
         </Section>
+ 
+        
 
-        {/* ===========================================================
-            2. 🌍 长背景容器
-            ⚡️ 关键修改：添加了 -mt-[100px] 和 z-10
-           =========================================================== */}
-        <div 
-          className={cn(
-            "relative w-full",
-            "z-10", // 层级：比 Hero 背景(0)高，比 Hero 按钮(20)低
-            // 👇 负边距：让整个区域往上提，盖住 Hero 的底部
-            // 你可以调整这个数值：-mt-20, -mt-32, -mt-[100px] 等
-            "-mt-[120%] md:-mt-36" 
-          )}
-        >
-          
-          {/* 长背景图层 */}
-          <div className="absolute inset-0 z-0 pointer-events-none">
-             <div className="block md:hidden relative w-full h-full">
-               <Image
-                 src="https://image.xixingwangluokeji.cn/mobile/bj_1.png" 
-                 alt="Long Background Mobile"
-                 fill
-                 className="object-cover object-top"
-                 unoptimized
-               />
-             </div>
-             <div className="hidden md:block relative w-full h-full">
-               <Image
-                 src="https://image.xixingwangluokeji.cn/desktop/bj_1.png" 
-                 alt="Long Background Desktop"
-                 fill
-                 className="object-cover object-top"
-                 unoptimized
-               />
-             </div>
-          </div>
+          <Section className="pt-40 pb-10 md:pt-64 md:pb-20">
+          <Container size="lg">
+            <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-16">
+              
+              {/* 左侧：文字内容 */}
+              <div className="flex-1 space-y-6 text-center lg:text-left z-10">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-wide">
+                    龙成游戏公会
+                  </h2>
+                  <p className="text-brand-gold tracking-[0.3em] text-sm font-game uppercase opacity-80">
+                    Game Guild
+                  </p>
+                </div>
+                
+                <div className="text-gray-300 leading-relaxed text-sm md:text-[15px] text-justify indent-8 lg:indent-0 opacity-90 font-light tracking-wide">
+                  <p>
+                    龙成游戏公会最早成立于2014年，是一只专注于宣发精品游戏的团队，通俗一点来讲，就是好游戏的搬运工，组织过数以百万计的精品游戏宣发，经历了从网友到手游的蜕变，跟随龙成游戏公会的游玩的用户规模达到100万用户甚至更多。
+                  </p>
+                  <br />
+                  <p>
+                    为什么要跟游戏公会玩？因为游玩的过程中，我们有专业的公会会长进行指导，每一名会长都是热爱游戏的狂热粉丝，会教你玩好每一款游戏，快速熟悉一款游戏，了解游戏中的一些活动玩法，解疑答惑，帮助对游戏有更高的理解，组织帮派战，城战，跨服战，国战等各类游戏精彩的玩法。
+                  </p>
+                  <br />
+                  <p>
+                    另外，让每位玩家充值的每一分钱都能花在刀刃上，能花小钱办大事，用最小量的资金帮助你提升更高的战力。另外，因为我们是一只由会长+玩家组织的团队，可以跟游戏官方建立合作，获取更多的游戏官方礼包码，所以我们能获得更优质的资源，这些都是散人玩家获取不到的资源。这里不只是游戏，更是一个家。一起聊天、一起并肩作战，游戏变得更有趣！
+                  </p>
+                </div>
+              </div>
 
-          {/* 👇 下面的 Section 需要加 pt (Padding Top) 
-              因为容器往上提了，如果不加 padding，文字可能会撞到 Hero 的按钮
-          */}
-          
+              {/* 右侧：图片/插画 */}
+              <div className="flex-1 w-full max-w-md lg:max-w-none relative group">
+                {/* 装饰边框效果 */}
+                <div className="absolute -inset-1 bg-gradient-to-b from-brand-gold/20 to-transparent rounded-lg blur-sm opacity-50" />
+                
+                <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden border border-white/10 bg-black/40 backdrop-blur-sm">
+                  {/* 👇 请替换这里的图片 src 为你的实际人物图 */}
+                  <Image
+                    src="https://image.xixingwangluokeji.cn/desktop/rw_1.png" 
+                    alt="龙成公会成员展示"
+                    fill
+                    className="object-contain hover:scale-105 transition-transform duration-700"
+                  />
+                  
+                  {/* 图片上的光效装饰 */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                </div>
+                
+                {/* 角落装饰线条 */}
+                <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-brand-gold/50 rounded-tl-lg" />
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-brand-gold/50 rounded-br-lg" />
+              </div>
+
+            </div>
+          </Container>
+        </Section>
           {/* 🎯 核心优势 */}
           <Section id="advantages" className="relative z-10 bg-transparent pt-40 md:pt-48">
             <Container size="lg">
@@ -189,8 +207,7 @@ export default function HomePage() {
             </Container>
           </Section>
 
-        </div> {/* End of 长背景容器 */}
-
+       
         <Footer />
       </main>
     </>
