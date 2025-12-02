@@ -3,8 +3,7 @@
 import {
   GameButton,
   GameTitle,
-  GameCard,
-  GameCardGrid,
+  FeatureCard,
   Section,
   Container,
 } from '@/components/ui'
@@ -14,19 +13,19 @@ import { cn } from '@/lib/utils'
 
 export default function HomePage() {
   return (
-    <>
+    <div className="relative w-full overflow-x-hidden">
       <Header />
 
-      <main className="relative bg-black">
+      <main className="relative bg-brand-dark overflow-x-hidden">
         {/* =========================================
-            1. 🎬 Hero 区域 (保持独立背景)
+            1. 🎬 Hero 区域
            ========================================= */}
         <Section
           id="hero"
           className={cn(
-            "relative overflow-hidden  ",
-            "aspect-[9/16] md:aspect-[16/9]", 
-            
+            "relative overflow-hidden",
+            "aspect-[2160/1816] md:aspect-[16/9]",
+            "!px-0 !py-0"
           )}
         >
           {/* Hero 背景图 (Z-0) */}
@@ -37,7 +36,7 @@ export default function HomePage() {
                 alt="Hero Mobile"
                 fill
                 priority
-                className=" object-contain object-top"
+                className="object-contain object-top"
                 unoptimized
               />
             </div>
@@ -53,16 +52,19 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Hero 内容 (Z-20: 确保在所有背景之上) */}
+          {/* Hero 内容 (Z-20) */}
           <div 
             className={cn(
               "absolute left-0 right-0 z-20",
               "flex flex-col items-center justify-end",
-              // 按钮位置：留出足够空间给下方背景"插入"
-              "bottom-[55%] md:bottom-[12%]", 
-              " md:gap-8" 
+              "bottom-[20%] md:bottom-[10%]", 
+              "md:gap-2" 
             )}
           >
+             {/* 标语 */}
+            <p className="text-sm md:text-2xl text-white font-bold  text-center px-4">
+              跟对公会,游戏才真正好玩!
+            </p>
             {/* 按钮 */}
             <div className="flex justify-center">
               <GameButton
@@ -70,8 +72,7 @@ export default function HomePage() {
                   "relative z-10 cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95",
                   "bg-transparent border-none shadow-none flex items-center justify-center",
                   "bg-[url('https://image.xixingwangluokeji.cn/desktop/ljjr_1.png')] bg-contain bg-center bg-no-repeat",
-                  // 按钮尺寸优化
-                  "w-[180px] h-[20px] md:w-[260px] md:h-[72px]",   
+                  "w-[140px] h-[16px] sm:w-[180px] sm:h-[20px] md:w-[260px] md:h-[72px]",   
                   "text-transparent select-none" 
                 )}
                 onClick={() => console.log('立即加入')}
@@ -80,10 +81,7 @@ export default function HomePage() {
               </GameButton>
             </div>
 
-            {/* 标语 */}
-            <p className="text-sm md:text-2xl text-white font-bold animate-pulse drop-shadow-md text-center px-4">
-              跟对公会,游戏才真正好玩!
-            </p>
+         
 
             {/* 徽章 */}
             <div className="relative">
@@ -93,15 +91,17 @@ export default function HomePage() {
             </div>
           </div>
         </Section>
- 
-        
 
-          <Section className="pt-40 pb-10 md:pt-64 md:pb-20">
+        {/* =========================================
+            2. 📜 公会介绍 (左文右图) - 新增区块
+           ========================================= */}
+        <Section className="relative z-10 py-16 md:py-24 bg-gradient-to-b from-black to-brand-dark/50 overflow-hidden">
           <Container size="lg">
             <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-16">
               
               {/* 左侧：文字内容 */}
-              <div className="flex-1 space-y-6 text-center lg:text-left z-10">
+              {/* 👇【修改点】：添加 px-4 防止手机端文字顶边，添加 md:px-0 在桌面端复原 */}
+              <div className="flex-1 space-y-6 text-center lg:text-left z-10 px-4 md:px-0">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-wide">
                     龙成游戏公会
@@ -111,7 +111,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 
-                <div className="text-gray-300 leading-relaxed text-sm md:text-[15px] text-justify indent-8 lg:indent-0 opacity-90 font-light tracking-wide">
+                <div className="text-gray-300 leading-relaxed text-sm md:text-[15px] text-justify indent-0 md:indent-8 opacity-90 font-light tracking-wide">
                   <p>
                     龙成游戏公会最早成立于2014年，是一只专注于宣发精品游戏的团队，通俗一点来讲，就是好游戏的搬运工，组织过数以百万计的精品游戏宣发，经历了从网友到手游的蜕变，跟随龙成游戏公会的游玩的用户规模达到100万用户甚至更多。
                   </p>
@@ -127,89 +127,134 @@ export default function HomePage() {
               </div>
 
               {/* 右侧：图片/插画 */}
-              <div className="flex-1 w-full max-w-md lg:max-w-none relative group">
-                {/* 装饰边框效果 */}
+              {/* 👇【建议】：给图片容器也加个 px-4，防止手机端图片边框贴屏幕太紧 */}
+              <div className="flex-1 w-full max-w-md lg:max-w-none relative group px-4 md:px-0 overflow-hidden">
                 <div className="absolute -inset-1 bg-gradient-to-b from-brand-gold/20 to-transparent rounded-lg blur-sm opacity-50" />
                 
                 <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden border border-white/10 bg-black/40 backdrop-blur-sm">
-                  {/* 👇 请替换这里的图片 src 为你的实际人物图 */}
                   <Image
                     src="https://image.xixingwangluokeji.cn/desktop/rw_1.png" 
                     alt="龙成公会成员展示"
                     fill
                     className="object-contain hover:scale-105 transition-transform duration-700"
                   />
-                  
-                  {/* 图片上的光效装饰 */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
                 
-                {/* 角落装饰线条 */}
-                <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-brand-gold/50 rounded-tl-lg" />
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-brand-gold/50 rounded-br-lg" />
+                {/* 装饰线条 */}
+                <div className="absolute top-0 left-4 md:top-0 md:left-0 w-8 h-8 border-t-2 border-l-2 border-brand-gold/50 rounded-tl-lg" />
+                <div className="absolute bottom-0 right-4 md:bottom-0 md:right-0 w-8 h-8 border-b-2 border-r-2 border-brand-gold/50 rounded-br-lg" />
               </div>
 
             </div>
           </Container>
         </Section>
-          {/* 🎯 核心优势 */}
-          <Section id="advantages" className="relative z-10 bg-transparent pt-40 md:pt-48">
-            <Container size="lg">
-              <GameTitle variant="gold" size="xl" as="h2">核心优势</GameTitle>
-              <GameCardGrid cols={2}>
-                <GameCard icon="🎮" title="游戏体验升级" description="专业会长全程指导..." variant="gold" />
-                <GameCard icon="💰" title="经济与福利" description="公会专属折扣和返利..." variant="gold" />
-                <GameCard icon="⚔️" title="战斗与社交" description="告别孤军奋战..." variant="dragon" />
-                <GameCard icon="🏆" title="荣耀与成就" description="集体冲击排行榜..." variant="dragon" />
-              </GameCardGrid>
-              <div className="mt-12 max-w-3xl mx-auto">
-                  <GameCard icon="⭐" title="特别优势" variant="game" description="10年沉淀 · 全品类覆盖 · 24小时服务" />
-              </div>
-            </Container>
-          </Section>
 
-          {/* 🎯 为什么选择我们 */}
-          <Section id="why-us" className="relative z-10 bg-transparent">
-            <Container size="lg">
-              <GameTitle variant="dragon" size="xl" as="h2">为什么选择加入龙成公会?</GameTitle>
-              <div className="flex flex-wrap justify-center gap-3 mb-12">
-                {['专业带玩', '战力提升快', '氛围满分', '专属福利', '热血团战'].map((label, idx) => (
-                  <div key={idx} className="glass rounded-full px-6 py-3">
-                    <span className="text-gray-200 font-bold">{label}</span>
-                  </div>
-                ))}
-              </div>
-              {/* ... */}
-            </Container>
-          </Section>
+        {/* =========================================
+            3. 🎯 核心优势
+           ========================================= */}
+        <Section id="advantages" className="relative z-10 py-16 md:py-24">
+          <Container size="lg">
+            <GameTitle variant="gold" size="xl" as="h2">核心优势</GameTitle>
 
-          {/* 🚀 CTA 区域 */}
-          <Section id="cta" className="relative z-10 bg-transparent pb-32">
-            <Container size="md" className="text-center">
-              <GameTitle variant="gold" size="xl" as="h2">准备好开始你的传奇之旅了吗?</GameTitle>
-              <div className="flex justify-center">
-                 <GameButton 
-                    className={cn(
-                      "relative z-10 cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95",
-                      "bg-transparent border-none shadow-none flex items-center justify-center",
-                      "bg-[url('https://image.xixingwangluokeji.cn/desktop/ljjr_1.png')] bg-contain bg-center bg-no-repeat",
-                      "w-[180px] h-[50px] md:w-[260px] md:h-[72px]",
-                      "text-transparent select-none"
-                    )}
-                    onClick={() => console.log('立即加入')}
-                  >
-                    立即加入
-                 </GameButton>
-              </div>
-              <p className="mt-8 text-gray-400 text-lg">
-                加入我们,与<span className="text-brand-gold font-bold">100万+</span>玩家一起...
-              </p>
-            </Container>
-          </Section>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+              <FeatureCard
+                image="https://image.xixingwangluokeji.cn/desktop/rw_1.png"
+                title="游戏体验层面"
+                subtitle="GAME EXPERIENCE"
+                variant="gold"
+                features={[
+                  "新手无压力：从零开始也不用怕，有会长和老玩家手把手教，快速上手。",
+                  "游戏攻略直通车：不用自己苦苦摸索，直接拿到最实用的攻略。",
+                  "活动提醒：每天、每周的重要活动提前通知，不错过任何一次好奖励。",
+                  "角色养成规划：帮你规划升级、装备、技能搭配，少走弯路更快成长。"
+                ]}
+              />
 
-       
+              <FeatureCard
+                image="https://image.xixingwangluokeji.cn/desktop/rw_1.png"
+                title="经济与福利层面"
+                subtitle="ECONOMY & BENEFITS"
+                variant="dragon"
+                features={[
+                  "公会专属折扣和返利：充值更划算，让你的每一分钱都花在刀刃上。",
+                  "资源共享：公会内部共享游戏资源、礼包码，大家一起薅羊毛。",
+                  "专属活动奖励：参与公会活动有额外奖励，福利拿到手软。"
+                ]}
+              />
+
+              <FeatureCard
+                image="https://image.xixingwangluokeji.cn/desktop/rw_1.png"
+                title="战斗与社交层面"
+                subtitle="BATTLE & SOCIAL"
+                variant="game"
+                features={[
+                  "组队开黑更轻松：告别孤军奋战，随时找到靠谱队友一起刷本、PK。",
+                  "公会战热血沸腾：千人同屏团战，体验真正的战场氛围。",
+                  "交友圈子：认识志同道合的朋友，游戏里的兄弟情义无价。"
+                ]}
+              />
+
+              <FeatureCard
+                image="https://image.xixingwangluokeji.cn/desktop/rw_1.png"
+                title="荣耀与成就层面"
+                subtitle="HONOR & ACHIEVEMENT"
+                variant="gold"
+                features={[
+                  "公会排名冲榜：集体的力量冲击排行榜，共享荣耀。",
+                  "专属称号和徽章：公会成员独有的身份标识，走到哪里都是焦点。",
+                  "见证成长：从新人到大佬，公会记录你的每一步成长轨迹。"
+                ]}
+              />
+            </div>
+          </Container>
+        </Section>
+
+        {/* =========================================
+            4. ❓ 为什么选择我们
+           ========================================= */}
+        <Section id="why-us" className="relative z-10">
+          <Container size="lg">
+            <GameTitle variant="dragon" size="xl" as="h2">为什么选择加入龙成公会?</GameTitle>
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {['专业带玩', '战力提升快', '氛围满分', '专属福利', '热血团战'].map((label, idx) => (
+                <div key={idx} className="glass rounded-full px-6 py-3 hover:bg-white/10 transition-colors cursor-default">
+                  <span className="text-gray-200 font-bold">{label}</span>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </Section>
+
+        {/* =========================================
+            5. 🚀 CTA 区域
+           ========================================= */}
+        <Section id="cta" className="relative z-10 pb-32">
+          <Container size="md" className="text-center">
+            <GameTitle variant="gold" size="xl" as="h2">准备好开始你的传奇之旅了吗?</GameTitle>
+            <div className="flex justify-center">
+                <GameButton 
+                  className={cn(
+                    "relative z-10 cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95",
+                    "bg-transparent border-none shadow-none flex items-center justify-center",
+                    "bg-[url('https://image.xixingwangluokeji.cn/desktop/ljjr_1.png')] bg-contain bg-center bg-no-repeat",
+                    "w-[140px] h-[40px] sm:w-[180px] sm:h-[50px] md:w-[260px] md:h-[72px]",
+                    "text-transparent select-none"
+                  )}
+                  onClick={() => console.log('立即加入')}
+                >
+                  立即加入
+                </GameButton>
+            </div>
+            <p className="mt-8 text-gray-400 text-lg">
+              加入我们,与<span className="text-brand-gold font-bold">100万+</span>玩家一起,
+              书写游戏世界的新篇章
+            </p>
+          </Container>
+        </Section>
+
         <Footer />
       </main>
-    </>
+    </div>
   )
 }

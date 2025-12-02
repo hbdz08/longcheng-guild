@@ -23,7 +23,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        'relative py-16 md:py-24 lg:py-32',
+        'relative py-16 md:py-24 lg:py-32 overflow-hidden',
         'px-4 sm:px-6 md:px-8',
         fullHeight && 'min-h-screen flex items-center justify-center',
         className
@@ -51,7 +51,7 @@ export function Container({
   return (
     <div
       className={cn(
-        'mx-auto w-full',
+        'mx-auto w-full overflow-x-hidden',
         size === 'sm' && 'max-w-3xl',
         size === 'md' && 'max-w-5xl',
         size === 'lg' && 'max-w-7xl',

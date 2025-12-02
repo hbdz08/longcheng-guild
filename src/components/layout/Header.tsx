@@ -8,14 +8,14 @@ export function Header() {
 
   const navItems = [
     { label: '首页', href: '#hero' },
-    { label: '核心优势', href: '#advantages' },
-    { label: '为什么选择我们', href: '#why-us' },
-    { label: '加入我们', href: '#cta' },
+    { label: '核心優勢', href: '#advantages' },
+    { label: '爲什麼選擇我們', href: '#why-us' },
+    { label: '加入我們', href: '#cta' },
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10 overflow-hidden">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a
@@ -28,17 +28,11 @@ export function Header() {
 
               {/* Logo图标 */}
               <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-dragon flex items-center justify-center font-game font-bold text-white text-xl md:text-2xl shadow-glow-blue">
-                龙
+              龍
               </div>
             </div>
 
-            {/* Logo文字 */}
-            <div className="hidden sm:block">
-              <div className="text-gradient-dragon font-game font-bold text-xl md:text-2xl">
-                龙成公会
-              </div>
-              <div className="text-gray-400 text-xs">SINCE 2014</div>
-            </div>
+            
           </a>
 
           {/* 桌面端导航 */}
@@ -47,19 +41,14 @@ export function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="px-4 py-2 text-gray-300 hover:text-white transition-colors relative group"
+                className="px-4 py-2 text-dark-300 hover:text-white transition-colors relative group"
               >
                 {item.label}
                 <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-gold scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
               </a>
             ))}
 
-            <a
-              href="#cta"
-              className="ml-2 lg:ml-4 px-6 py-2.5 rounded-full bg-gradient-gold text-white font-bold hover:shadow-glow-gold transition-all hover:scale-105"
-            >
-              立即加入
-            </a>
+             
           </div>
 
           {/* 移动端菜单按钮 */}

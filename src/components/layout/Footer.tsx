@@ -41,7 +41,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="relative bg-gradient-to-b from-brand-dark to-black border-t border-white/10">
+    <footer className="relative bg-gradient-to-b from-brand-dark to-black border-t border-white/10 overflow-hidden">
       {/* 背景装饰 */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(217,119,6,0.05),transparent_50%)]" />
 
