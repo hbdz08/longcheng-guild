@@ -41,15 +41,7 @@ export function GameTitle({
         size === 'xl' && 'text-[clamp(2.75rem,6vw,4.5rem)] mb-10',
         size === '2xl' && 'text-[clamp(3.25rem,7vw,5.5rem)] mb-12',
 
-        // 渐变色
-        variant === 'dragon' && 'bg-gradient-dragon',
-        variant === 'gold' && 'bg-gradient-gold',
-        variant === 'game' && 'bg-gradient-game',
-
-        // 发光效果
-        glow && variant === 'dragon' && 'drop-shadow-[0_0_20px_rgba(59,130,246,0.6)]',
-        glow && variant === 'gold' && 'drop-shadow-[0_0_20px_rgba(217,119,6,0.6)]',
-        glow && variant === 'game' && 'drop-shadow-[0_0_20px_rgba(236,72,153,0.6)]',
+       'metal-gradient-title',
 
         className
       )}

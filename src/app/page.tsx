@@ -86,7 +86,7 @@ export default function HomePage() {
             {/* 徽章 */}
             <div className="relative">
                 <span className="text-brand-gold font-game text-sm md:text-2xl font-bold tracking-widest opacity-80">
-                 SINCE 2014
+                 始于 2014
                 </span>
             </div>
           </div>
@@ -103,11 +103,14 @@ export default function HomePage() {
               {/* 👇【修改点】：添加 px-4 防止手机端文字顶边，添加 md:px-0 在桌面端复原 */}
               <div className="flex-1 space-y-6 text-center lg:text-left z-10 px-4 md:px-0">
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-wide">
-                    龙成游戏公会
+                  {/* 主标题 */}
+                  <h2 className="text-4xl md:text-6xl font-bold mb-2 font-serif metal-gradient-title">
+                    龙城游戏公会
                   </h2>
-                  <p className="text-brand-gold tracking-[0.3em] text-sm font-game uppercase opacity-80">
-                    Game Guild
+
+                  {/* 副标题 */}
+                  <p className="text-sm md:text-lg font-bold uppercase tracking-[0.5em] md:tracking-[0.8em] pl-1 purple-gradient-subtitle">
+                    GAME GUILD
                   </p>
                 </div>
                 
@@ -131,9 +134,9 @@ export default function HomePage() {
               <div className="flex-1 w-full max-w-md lg:max-w-none relative group px-4 md:px-0 overflow-hidden">
                 <div className="absolute -inset-1 bg-gradient-to-b from-brand-gold/20 to-transparent rounded-lg blur-sm opacity-50" />
                 
-                <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden border border-white/10 bg-black/40 backdrop-blur-sm">
+                <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden  bg-black/40 backdrop-blur-sm">
                   <Image
-                    src="https://image.xixingwangluokeji.cn/desktop/rw_1.png" 
+                    src="/image/lr_1@2x.png"
                     alt="龙成公会成员展示"
                     fill
                     className="object-contain hover:scale-105 transition-transform duration-700"
@@ -141,9 +144,7 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
                 
-                {/* 装饰线条 */}
-                <div className="absolute top-0 left-4 md:top-0 md:left-0 w-8 h-8 border-t-2 border-l-2 border-brand-gold/50 rounded-tl-lg" />
-                <div className="absolute bottom-0 right-4 md:bottom-0 md:right-0 w-8 h-8 border-b-2 border-r-2 border-brand-gold/50 rounded-br-lg" />
+                
               </div>
 
             </div>

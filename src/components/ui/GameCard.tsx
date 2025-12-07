@@ -236,10 +236,8 @@ export function FeatureCard({
           {/* 标题 */}
           <h3
             className={cn(
-              'text-2xl md:text-3xl font-bold mb-2',
-              variant === 'gold' && 'text-white',
-              variant === 'dragon' && 'text-white',
-              variant === 'game' && 'text-white',
+              'text-2xl md:text-3xl font-bold mb-2 ',
+              'metal-gradient-title'
             )}
           >
             {title}
