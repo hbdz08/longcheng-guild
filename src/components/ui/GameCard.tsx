@@ -20,16 +20,17 @@ interface FeatureCardProps {
   variant?: 'default' | 'gold' | 'dragon' | 'game'
   className?: string
   reverse?: boolean
+  imageClassName?: string
 }
 
 /**
- * 🎴 游戏风格卡片
+ * 🎴 遊戲風格卡片
  *
  * 特性:
- * - 玻璃态背景
- * - 悬浮发光效果
- * - 图标 + 标题 + 描述
- * - 多种颜色变体
+ * - 玻璃態背景
+ * - 懸浮發光效果
+ * - 圖標 + 標題 + 描述
+ * - 多種顏色變體
  */
 export function GameCard({
   icon,
@@ -44,7 +45,7 @@ export function GameCard({
     <div
       onClick={onClick}
       className={cn(
-        // 基础样式
+        // 基礎樣式
         'group relative',
         'rounded-2xl glass',
         'p-6 md:p-8',
@@ -73,16 +74,16 @@ export function GameCard({
         )}
       />
 
-      {/* 内容 */}
+      {/* 內容 */}
       <div className="relative z-10 flex flex-col items-center text-center">
-        {/* 图标 */}
+        {/* 圖標 */}
         {icon && (
           <div className="mb-4 md:mb-6 text-5xl md:text-6xl transform transition-transform duration-300 group-hover:scale-110">
             {icon}
           </div>
         )}
 
-        {/* 标题 */}
+        {/* 標題 */}
         <h3
           className={cn(
             'mb-3 md:mb-4',
@@ -104,7 +105,7 @@ export function GameCard({
         </div>
       </div>
 
-      {/* 装饰边框 */}
+      {/* 裝飾邊框 */}
       <div
         className={cn(
           'absolute inset-0 rounded-2xl border transition-colors duration-300',
@@ -120,10 +121,10 @@ export function GameCard({
 }
 
 /**
- * 🎴 卡片网格容器
+ * 🎴 卡片網格容器
  *
- * 自动响应式:
- * - 手机: 1列
+ * 自動響應式:
+ * - 手機: 1列
  * - 平板: 2列
  * - 桌面: auto-fit
  */
@@ -153,12 +154,12 @@ export function GameCardGrid({
 }
 
 /**
- * 🎴 特性卡片 - 左图右文布局
+ * 🎴 特性卡片 - 左圖右文佈局
  *
  * 特性:
- * - 左侧图片带装饰边框
- * - 右侧标题+副标题+特性列表
- * - 支持反向布局
+ * - 左側圖片帶裝飾邊框
+ * - 右側標題+副標題+特性列表
+ * - 支持反向佈局
  */
 export function FeatureCard({
   image,
@@ -168,13 +169,13 @@ export function FeatureCard({
   variant = 'gold',
   className,
   reverse = false,
+  imageClassName,
 }: FeatureCardProps) {
   return (
     <div
       className={cn(
         'group relative',
         'rounded-2xl glass',
-        'p-6 md:p-8',
         'overflow-hidden',
         className
       )}
@@ -190,14 +191,22 @@ export function FeatureCard({
         )}
       />
 
-      {/* 内容区域 */}
-      <div className={cn(
-        'relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8',
-        reverse && 'md:flex-row-reverse'
-      )}>
-        {/* 左侧图片 */}
-        <div className="relative w-full md:w-2/5 flex-shrink-0">
-          {/* 装饰边框 */}
+      <div
+        className={cn(
+          'relative z-10 flex flex-col gap-6 p-6 md:p-8',
+          reverse && 'md:flex-row-reverse md:text-right',
+          !reverse && 'md:flex-row'
+        )}
+      >
+        {/* 圖片 */}
+        <div
+          className={cn(
+            'relative w-full flex-shrink-0',
+            'mx-auto md:mx-0',
+            'md:w-[45%] lg:w-[40%] xl:w-[300px]',
+            imageClassName
+          )}
+        >
           <div className={cn(
             'absolute -inset-1 rounded-lg',
             variant === 'gold' && 'bg-gradient-to-b from-yellow-500/30 to-transparent',
@@ -205,74 +214,66 @@ export function FeatureCard({
             variant === 'game' && 'bg-gradient-to-b from-pink-500/30 to-transparent',
           )} />
 
-          {/* 角标装饰 */}
-          <div className={cn(
-            'absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 rounded-tl-lg z-10',
-            variant === 'gold' && 'border-yellow-500/50',
-            variant === 'dragon' && 'border-blue-500/50',
-            variant === 'game' && 'border-pink-500/50',
-          )} />
-          <div className={cn(
-            'absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 rounded-br-lg z-10',
-            variant === 'gold' && 'border-yellow-500/50',
-            variant === 'dragon' && 'border-blue-500/50',
-            variant === 'game' && 'border-pink-500/50',
-          )} />
-
-          {/* 图片 */}
-          <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden bg-black/40">
+          <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-black/40">
             <Image
               src={image}
               alt={title}
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, 300px"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           </div>
         </div>
 
-        {/* 右侧内容 */}
-        <div className="flex-1 text-left">
-          {/* 标题 */}
+        {/* 文字內容 */}
+        <div className="flex-1">
           <h3
             className={cn(
-              'text-2xl md:text-3xl font-bold mb-2 ',
+              'text-2xl md:text-3xl font-bold mb-2',
               'metal-gradient-title'
             )}
           >
             {title}
           </h3>
 
-          {/* 副标题 */}
           {subtitle && (
-            <p className={cn(
-              'text-sm font-game tracking-widest mb-4 opacity-80',
-              variant === 'gold' && 'text-brand-gold',
-              variant === 'dragon' && 'text-blue-400',
-              variant === 'game' && 'text-pink-400',
-            )}>
+            <p
+              className={cn(
+                'text-sm font-game tracking-widest mb-4 opacity-80',
+                variant === 'gold' && 'text-brand-gold',
+                variant === 'dragon' && 'text-blue-400',
+                variant === 'game' && 'text-pink-400',
+              )}
+            >
               {subtitle}
             </p>
           )}
 
-          {/* 分隔虚线 */}
-          <div className={cn(
-            'w-full h-px mb-4',
-            variant === 'gold' && 'bg-gradient-to-r from-yellow-500/50 via-yellow-500/20 to-transparent',
-            variant === 'dragon' && 'bg-gradient-to-r from-blue-500/50 via-blue-500/20 to-transparent',
-            variant === 'game' && 'bg-gradient-to-r from-pink-500/50 via-pink-500/20 to-transparent',
-          )} />
+          <div
+            className={cn(
+              'w-full h-px mb-4',
+              variant === 'gold' && 'bg-gradient-to-r from-yellow-500/50 via-yellow-500/20 to-transparent',
+              variant === 'dragon' && 'bg-gradient-to-r from-blue-500/50 via-blue-500/20 to-transparent',
+              variant === 'game' && 'bg-gradient-to-r from-pink-500/50 via-pink-500/20 to-transparent',
+              reverse && 'md:bg-gradient-to-l'
+            )}
+          />
 
-          {/* 特性列表 */}
           <ul className="space-y-3">
             {features.map((feature, idx) => (
-              <li key={idx} className="flex items-start gap-3 text-gray-300 text-sm md:text-base">
-                <span className={cn(
-                  'flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2',
-                  variant === 'gold' && 'bg-brand-gold',
-                  variant === 'dragon' && 'bg-blue-400',
-                  variant === 'game' && 'bg-pink-400',
-                )} />
+              <li
+                key={idx}
+                className="flex items-start gap-3 text-gray-300 text-sm md:text-base"
+              >
+                <span
+                  className={cn(
+                    'flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2',
+                    variant === 'gold' && 'bg-brand-gold',
+                    variant === 'dragon' && 'bg-blue-400',
+                    variant === 'game' && 'bg-pink-400',
+                  )}
+                />
                 <span>{feature}</span>
               </li>
             ))}
@@ -280,7 +281,7 @@ export function FeatureCard({
         </div>
       </div>
 
-      {/* 右上角装饰图标 */}
+      {/* 右上角裝飾圖標 */}
       <div className={cn(
         'absolute top-4 right-4 opacity-20',
         variant === 'gold' && 'text-yellow-500',
