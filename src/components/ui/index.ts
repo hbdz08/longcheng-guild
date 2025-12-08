@@ -1,5 +1,5 @@
 /**
- * 🎮 UI 组件库导出
+ * 🎮 UI 組件庫導出
  */
 
 export { GameButton } from './GameButton'

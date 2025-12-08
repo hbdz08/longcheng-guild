@@ -1,5 +1,5 @@
 /**
- * 布局组件导出
+ * 佈局組件導出
  */
 
 export { Header } from './Header'

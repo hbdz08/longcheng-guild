@@ -7,32 +7,34 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // 🎨 游戏公会品牌色
+      // 🎨 遊戲公會品牌色
       colors: {
         brand: {
           gold: '#d97706',
           dragon: '#3b82f6',
           game: '#ec4899',
           dark: '#0a0a0a',
-          whith: '#fefefe'
+          whith: '#fefefe',
+          gray:'#B3B3B3'
         },
       },
 
-      // 📝 游戏风格字体
+      // 📝 遊戲風格字體
       fontFamily: {
         sans: ['Inter', 'Noto Sans SC', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         game: ['Orbitron', 'ui-monospace', 'monospace'],
       },
 
-      // ✨ 渐变背景
+      // ✨ 漸變背景
       backgroundImage: {
         'gradient-dragon': 'linear-gradient(135deg,#fefefe 0%, #d97706 100%)',
         'gradient-game': 'linear-gradient(135deg, #ec4899 0%, #3b82f6 100%)',
         'gradient-gold': 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)',
         'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',
+        'gradient-gray': 'linear-gradient(135deg,rgb(255, 255, 255) 0%,rgb(218, 218, 217) 100%)',
       },
 
-      // 🌟 发光阴影
+      // 🌟 發光陰影
       boxShadow: {
         'glow-gold': '0 0 20px rgba(217, 119, 6, 0.5)',
         'glow-blue': '0 0 20px rgba(59, 130, 246, 0.5)',
@@ -40,7 +42,7 @@ module.exports = {
         'card': '0 8px 32px rgba(0, 0, 0, 0.4)',
       },
 
-      // 🎬 动画关键帧
+      // 🎬 動畫關鍵幀
       keyframes: {
         'float': {
           '0%, 100%': { transform: 'translateY(0px)' },
@@ -66,7 +68,7 @@ module.exports = {
         'slide-up': 'slide-up 0.6s ease-out',
       },
 
-      // 📐 响应式断点 (标准化)
+      // 📐 響應式斷點 (標準化)
       screens: {
         'xs': '475px',
         'sm': '640px',

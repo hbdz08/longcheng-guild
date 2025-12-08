@@ -94,8 +94,10 @@ export default function HomePage() {
   const [boardLoading, setBoardLoading] = useState(true)
   const [boardError, setBoardError] = useState<string | null>(null)
   const [isBoardHovering, setIsBoardHovering] = useState(false)
+  const [isReasonAutoPlay, setIsReasonAutoPlay] = useState(true)
   const boardContainerRef = useRef<HTMLDivElement | null>(null)
   const boardResumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const reasonAutoPlayTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const BOARD_API = 'https://admin.xixingsys.com/admin-api/site/company-website/comment/list?webSiteId=12&pageNo=1&pageSize=100'
   const marqueeMessages = boardMessages.length > 0 ? [...boardMessages, ...boardMessages] : []
@@ -149,9 +151,41 @@ export default function HomePage() {
     }
   }
 
+  // 处理用户点击切换 reason（暂停自动播放 8 秒）
+  const handleReasonClick = (reason: typeof reasons[0]) => {
+    setActiveReason(reason)
+    setIsReasonAutoPlay(false)
+
+    // 清除现有的自动播放定时器
+    if (reasonAutoPlayTimeoutRef.current) {
+      clearTimeout(reasonAutoPlayTimeoutRef.current)
+      reasonAutoPlayTimeoutRef.current = null
+    }
+
+    // 8秒后恢复自动播放
+    reasonAutoPlayTimeoutRef.current = setTimeout(() => {
+      setIsReasonAutoPlay(true)
+    }, 8000)
+  }
+
   useEffect(() => {
     fetchBoard()
   }, [])
+
+  // 自动轮播 reasons（每 5 秒切换一次）
+  useEffect(() => {
+    if (!isReasonAutoPlay) return
+
+    const interval = setInterval(() => {
+      setActiveReason((current) => {
+        const currentIndex = reasons.findIndex((r) => r.label === current.label)
+        const nextIndex = (currentIndex + 1) % reasons.length
+        return reasons[nextIndex]
+      })
+    }, 5000) // 每 5 秒切换
+
+    return () => clearInterval(interval)
+  }, [isReasonAutoPlay, reasons])
 
   useEffect(() => {
     if (boardMessages.length === 0) return
@@ -181,6 +215,9 @@ export default function HomePage() {
     return () => {
       if (boardResumeTimeoutRef.current) {
         clearTimeout(boardResumeTimeoutRef.current)
+      }
+      if (reasonAutoPlayTimeoutRef.current) {
+        clearTimeout(reasonAutoPlayTimeoutRef.current)
       }
     }
   }, [])
@@ -230,12 +267,12 @@ export default function HomePage() {
             className={cn(
               "absolute left-0 right-0 z-20",
               "flex flex-col items-center justify-end",
-              "bottom-[20%] md:bottom-[10%]", 
+              "bottom-[8%] md:bottom-[1%] 2xl:bottom-[5%]", 
               "md:gap-2" 
             )}
           >
              {/* 標語 */}
-            <p className="text-sm md:text-2xl text-white font-bold  text-center px-4">
+            <p className="text-sm md:text-2xl text-white font-bold  text-center px-4 metal-gradient-title">
               跟對公會,遊戲才真正好玩!
             </p>
             {/* 按鈕 */}
@@ -257,10 +294,17 @@ export default function HomePage() {
          
 
             {/* 徽章 */}
-            <div className="relative">
-                <span className="text-brand-gray font-game text-sm md:text-2xl font-bold tracking-widest opacity-80">
-                 始於 2014
-                </span>
+            <div className="relative   flex justify-center  ">
+              <div className="relative w-20 sm:w-22 md:w-24 lg:w-[8rem] 2xl:w-[15rem]">
+                <Image
+                  src="/image/sy2014@2x.png"
+                  alt="始於 2014"
+                  width={704}
+                  height={176}
+                  priority
+                  className="h-auto w-full select-none"
+                />
+              </div>
             </div>
           </div>
         </Section>
@@ -329,7 +373,25 @@ export default function HomePage() {
            ========================================= */}
         <Section id="advantages" className="relative z-10 py-14 md:py-24">
           <Container size="lg">
-            <GameTitle variant="gold" size="xl" as="h2">核心優勢</GameTitle>
+            {/* 标题区域 - 带装饰图片 */}
+            <div className="relative mb-12 md:mb-16 text-center">
+              {/* 装饰图片 - 作为背景 */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] md:w-full md:max-w-3xl lg:max-w-4xl h-auto pointer-events-none">
+                <Image
+                  src="/image/btd@2x.png"
+                  alt=""
+                  width={1200}
+                  height={300}
+                  className="w-full h-auto  "
+                  priority
+                />
+              </div>
+
+              {/* 标题内容 */}
+              <div className="relative z-10 py-8">
+                <GameTitle variant="gold" size="md" as="h2">核心優勢</GameTitle>
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
               <FeatureCard
@@ -353,7 +415,8 @@ export default function HomePage() {
                 features={[
                   "公會專屬折扣和返利：充值更划算，讓你的每一分錢都花在刀刃上。",
                   "資源共享：公會內部共享遊戲資源、禮包碼，大家一起薅羊毛。",
-                  "專屬活動獎勵：參與公會活動有額外獎勵，福利拿到手軟。"
+                  "專屬活動獎勵：參與公會活動有額外獎勵，福利拿到手軟。",
+                  "定期福利發放：每月固定福利，老玩家專屬獎勵，越久越划算。"
                 ]}
               />
 
@@ -365,7 +428,8 @@ export default function HomePage() {
                 features={[
                   "組隊開黑更輕鬆：告別孤軍奮戰，隨時找到靠譜隊友一起刷本、PK。",
                   "公會戰熱血沸騰：千人同屏團戰，體驗真正的戰場氛圍。",
-                  "交友圈子：認識志同道合的朋友，遊戲裏的兄弟情義無價。"
+                  "交友圈子：認識志同道合的朋友，遊戲裏的兄弟情義無價。",
+                  "語音開黑頻道：內建語音系統，實時溝通配合，默契加倍戰力飆升。"
                 ]}
               />
 
@@ -423,7 +487,7 @@ export default function HomePage() {
                     <button
                       key={reason.label}
                       type="button"
-                      onClick={() => setActiveReason(reason)}
+                      onClick={() => handleReasonClick(reason)}
                       aria-expanded={isActive}
                       className="w-full rounded-3xl border border-white/15 bg-black/60 px-5 py-2 text-left shadow-[0_18px_35px_rgba(0,0,0,0.45)]"
                     >
@@ -449,7 +513,7 @@ export default function HomePage() {
                           <ul className="space-y-2">
                             {reason.bullets.map((item, idx) => (
                               <li key={idx} className="flex items-start gap-2">
-                                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-gold shadow-glow-gold" />
+                                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-gray shadow-glow-gold" />
                                 <span>{item}</span>
                               </li>
                             ))}
@@ -489,7 +553,7 @@ export default function HomePage() {
                 <p className="text-base md:text-lg text-gray-200 max-w-3xl">
                   五大核心價值構成了龍成的基因，從戰場調度、戰力養成到社群福利，專業團隊為你搭建頂級遊戲與生活體驗。
                 </p>
-                <div className="h-px w-40 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-80" />
+                <div className="h-px w-40 bg-gradient-to-r from-transparent via-brand-gray to-transparent opacity-80" />
               </div>
 
               <div className="relative z-10 mt-10 flex gap-4 overflow-x-auto sm:flex-wrap sm:justify-center sm:overflow-visible [-webkit-overflow-scrolling:touch]">
@@ -498,7 +562,7 @@ export default function HomePage() {
                   return (
                     <button
                       key={reason.label}
-                      onClick={() => setActiveReason(reason)}
+                      onClick={() => handleReasonClick(reason)}
                       className={cn(
                         'group relative flex-shrink-0 overflow-hidden rounded-full px-5 sm:px-7 py-3 text-sm sm:text-base font-bold uppercase tracking-[0.15em] transition-all duration-300 border',
                         'shadow-[inset_0_1px_0_rgba(255,255,255,0.4),_0_12px_30px_rgba(0,0,0,0.45)]',
@@ -525,7 +589,7 @@ export default function HomePage() {
                   <div className="mt-6 space-y-3">
                     {activeReason.bullets.slice(0, 2).map((item, idx) => (
                       <div key={idx} className="flex gap-3 text-sm text-gray-100">
-                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-gold shadow-glow-gold" />
+                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-gray shadow-glow-gold" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -537,7 +601,7 @@ export default function HomePage() {
                   <ul className="mt-6 grid gap-3 text-sm md:text-base text-gray-200">
                     {activeReason.bullets.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <span className="mt-1 h-2 w-2 rounded-full bg-brand-gold shadow-glow-gold" />
+                        <span className="mt-1 h-2 w-2 rounded-full bg-brand-gray shadow-glow-gold" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -556,7 +620,26 @@ export default function HomePage() {
            ========================================= */}
         <Section id="board" className="relative z-10">
           <Container size="lg">
-          <GameTitle variant="gold" size="md" as="h2" className="mb-8 text-white">公會留言板</GameTitle>
+
+          <div className="relative mb-12 md:mb-16 text-center">
+              {/* 装饰图片 - 作为背景 */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] md:w-full md:max-w-3xl lg:max-w-4xl h-auto pointer-events-none">
+                <Image
+                  src="/image/btd@2x.png"
+                  alt=""
+                  width={1200}
+                  height={300}
+                  className="w-full h-auto  "
+                  priority
+                />
+              </div>
+
+              {/* 标题内容 */}
+              <div className="relative z-10 py-8">
+              <GameTitle variant="gold" size="md" as="h2" className="mb-8 text-white">公會留言板</GameTitle>
+              </div>
+            </div>
+         
     
             <div className="rounded-[32px] border border-white/10 bg-gradient-to-b from-black/70 to-black/90 p-6 md:p-10 shadow-[0_30px_80px_rgba(0,0,0,0.45)] space-y-8">
               
@@ -583,7 +666,7 @@ export default function HomePage() {
                 {!boardLoading && !boardError && boardMessages.length > 0 && (
                   <div
                     ref={boardContainerRef}
-                    className="relative h-full flex flex-col gap-4 overflow-y-auto pr-2"
+                    className="relative h-full flex flex-col gap-4 overflow-y-auto pr-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                     onMouseEnter={pauseBoardAutoScroll}
                     onMouseLeave={() => resumeBoardAutoScroll(200)}
                     onTouchStart={pauseBoardAutoScroll}
@@ -596,7 +679,7 @@ export default function HomePage() {
                     {marqueeMessages.map((message, index) => (
                       <div
                         key={`${message.id}-${index}`}
-                        className="flex gap-4 rounded-2xl border border-white/5 bg-white/[0.03] p-4 backdrop-blur-sm transition-transform duration-300 hover:border-brand-gold/40 hover:bg-white/[0.06]"
+                        className="flex gap-4 rounded-2xl border border-white/5 bg-white/[0.03] p-4 backdrop-blur-sm transition-transform duration-300 hover:border-brand-gray/40 hover:bg-white/[0.06]"
                       >
                         <div className="h-12 w-12 rounded-full bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center text-white/80">
                           <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -649,10 +732,30 @@ export default function HomePage() {
                   立即加入
                 </GameButton>
             </div>
-            <p className="mt-8 text-gray-400 text-lg">
-              加入我們,與<span className="text-brand-gold font-bold">100萬+</span>玩家一起,
-              書寫遊戲世界的新篇章
-            </p>
+            <div className="mt-12">
+              <div className="relative overflow-hidden rounded-[32px] border border-white/15 bg-gradient-to-r from-black/60 via-brand-dark/80 to-black/70 px-6 py-8 shadow-[0_25px_80px_rgba(0,0,0,0.55)] md:px-12 md:py-10">
+                <div className="pointer-events-none absolute inset-0 opacity-60">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.25),_transparent_60%)] blur-3xl" />
+                  <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent" />
+                  <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-white/30 to-transparent" />
+                </div>
+                <div className="relative z-10 flex flex-col items-center text-center gap-4">
+                  <p className="text-[0.7rem] uppercase tracking-[0.75em] text-white/50">JOIN LONGCHENG</p>
+                  <div className="flex items-center gap-3 text-white">
+                    <span className="h-px w-12 bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-70" />
+                    <p className="text-3xl md:text-4xl font-serif">加入我們</p>
+                    <span className="h-px w-12 bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-70" />
+                  </div>
+                  <p className="text-lg md:text-2xl text-gray-100 leading-relaxed max-w-3xl">
+                    與
+                    <span className="mx-2 inline-flex items-center rounded-full bg-gradient-to-r from-brand-gold via-amber-300 to-yellow-500 px-5 py-1.5 text-brand-dark text-xl md:text-2xl font-black shadow-[0_15px_35px_rgba(255,184,0,0.35)]">
+                      100W+
+                    </span>
+                    玩家一起，書寫遊戲世界的新篇章
+                  </p>
+                </div>
+              </div>
+            </div>
           </Container>
         </Section>
 

@@ -1,7 +1,7 @@
 {
   "name": "longcheng-guild",
   "version": "1.0.0",
-  "description": "龙成游戏公会官网 - 采用现代化技术栈和CSS优先设计",
+  "description": "龍成遊戲公會官網 - 採用現代化技術棧和CSS優先設計",
   "private": true,
   "scripts": {
     "dev": "next dev",

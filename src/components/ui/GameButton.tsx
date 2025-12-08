@@ -12,13 +12,13 @@ interface GameButtonProps {
 }
 
 /**
- * 🎮 游戏风格按钮
+ * 🎮 遊戲風格按鈕
  *
  * 特性:
- * - 多种颜色变体 (金色/龙蓝/游戏粉)
- * - 响应式尺寸
- * - 发光悬浮效果
- * - 点击动画
+ * - 多種顏色變體 (金色/龍藍/遊戲粉)
+ * - 響應式尺寸
+ * - 發光懸浮效果
+ * - 點擊動畫
  */
 export function GameButton({
   children,
@@ -34,23 +34,23 @@ export function GameButton({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        // 基础样式
+        // 基礎樣式
         'relative inline-flex items-center justify-center gap-2',
         'font-bold rounded-full',
         'transition-all duration-300 ease-out',
         'disabled:opacity-50 disabled:cursor-not-allowed',
         'overflow-hidden',
 
-        // 响应式尺寸
+        // 響應式尺寸
         size === 'sm' && 'px-4 py-2 text-sm',
         size === 'md' && 'px-6 py-3 text-base',
         size === 'lg' && 'px-8 py-4 text-lg md:px-10 md:py-5',
         size === 'xl' && 'px-10 py-5 text-xl md:px-14 md:py-6 md:text-2xl',
 
-        // 宽度
+        // 寬度
         fullWidth && 'w-full',
 
-        // 颜色变体
+        // 顏色變體
         variant === 'gold' && cn(
           'bg-gradient-gold text-white shadow-lg',
          
@@ -78,10 +78,10 @@ export function GameButton({
         className
       )}
     >
-      {/* 闪光效果 */}
+      {/* 閃光效果 */}
      
 
-      {/* 内容 */}
+      {/* 內容 */}
       <span className="relative z-10">{children}</span>
     </button>
   )

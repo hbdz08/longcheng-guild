@@ -174,91 +174,94 @@ export function FeatureCard({
   return (
     <div
       className={cn(
-        'group relative',
-        'rounded-2xl glass',
-        'overflow-hidden',
+        'group relative overflow-hidden',
+        'rounded-[30px] border border-white/10',
+        'bg-gradient-to-b from-black/80 via-brand-dark/80 to-black/95',
+        'shadow-[0_30px_60px_rgba(0,0,0,0.45)]',
         className
       )}
     >
       {/* 背景光效 */}
       <div
         className={cn(
-          'absolute inset-0 opacity-30',
-          variant === 'gold' && 'bg-gradient-to-br from-yellow-500/10 to-transparent',
-          variant === 'dragon' && 'bg-gradient-to-br from-blue-500/10 to-transparent',
-          variant === 'game' && 'bg-gradient-to-br from-pink-500/10 to-transparent',
-          variant === 'default' && 'bg-gradient-to-br from-gray-500/10 to-transparent'
+          'pointer-events-none absolute inset-0',
+          variant === 'gold' && 'bg-[radial-gradient(circle_at_top,_rgba(249,180,45,0.25),_transparent_55%)]',
+          variant === 'dragon' && 'bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.25),_transparent_55%)]',
+          variant === 'game' && 'bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.25),_transparent_55%)]',
+          variant === 'default' && 'bg-[radial-gradient(circle_at_top,_rgba(148,148,148,0.2),_transparent_55%)]'
         )}
       />
 
       <div
         className={cn(
-          'relative z-10 flex flex-col gap-6 p-6 md:p-8',
-          reverse && 'md:flex-row-reverse md:text-right',
-          !reverse && 'md:flex-row'
+          'relative z-10 flex flex-col gap-6 p-6 md:p-10',
+          'xl:flex-row xl:items-start',
+          reverse && 'xl:flex-row-reverse xl:text-right'
         )}
       >
-        {/* 圖片 */}
         <div
           className={cn(
             'relative w-full flex-shrink-0',
-            'mx-auto md:mx-0',
-            'md:w-[45%] lg:w-[40%] xl:w-[300px]',
+            'mx-auto xl:mx-0',
+            'xl:w-[260px] 2xl:w-[320px]',
             imageClassName
           )}
         >
           <div className={cn(
-            'absolute -inset-1 rounded-lg',
-            variant === 'gold' && 'bg-gradient-to-b from-yellow-500/30 to-transparent',
-            variant === 'dragon' && 'bg-gradient-to-b from-blue-500/30 to-transparent',
-            variant === 'game' && 'bg-gradient-to-b from-pink-500/30 to-transparent',
+            'absolute -inset-1 rounded-2xl opacity-80',
+            variant === 'gold' && 'bg-gradient-to-b from-yellow-500/35 via-transparent to-transparent',
+            variant === 'dragon' && 'bg-gradient-to-b from-blue-500/35 via-transparent to-transparent',
+            variant === 'game' && 'bg-gradient-to-b from-pink-500/35 via-transparent to-transparent',
           )} />
 
-          <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-black/40">
+          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/40">
             <Image
               src={image}
               alt={title}
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 300px"
+              sizes="(max-width: 768px) 100vw, 380px"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
           </div>
         </div>
 
-        {/* 文字內容 */}
-        <div className="flex-1">
-          <h3
-            className={cn(
-              'text-2xl md:text-3xl font-bold mb-2',
-              'metal-gradient-title'
-            )}
-          >
-            {title}
-          </h3>
-
-          {subtitle && (
-            <p
+        <div className="flex-1 min-w-0 space-y-4 text-left">
+          <div className={cn('space-y-3', reverse && 'xl:text-right')}>
+            <h3
               className={cn(
-                'text-sm font-game tracking-widest mb-4 opacity-80',
-                variant === 'gold' && 'text-brand-gold',
-                variant === 'dragon' && 'text-blue-400',
-                variant === 'game' && 'text-pink-400',
+                'text-2xl md:text-3xl font-bold',
+                'metal-gradient-title'
               )}
             >
-              {subtitle}
-            </p>
-          )}
+              {title}
+            </h3>
 
-          <div
-            className={cn(
-              'w-full h-px mb-4',
-              variant === 'gold' && 'bg-gradient-to-r from-yellow-500/50 via-yellow-500/20 to-transparent',
-              variant === 'dragon' && 'bg-gradient-to-r from-blue-500/50 via-blue-500/20 to-transparent',
-              variant === 'game' && 'bg-gradient-to-r from-pink-500/50 via-pink-500/20 to-transparent',
-              reverse && 'md:bg-gradient-to-l'
+            {subtitle && (
+              <p
+                className={cn(
+                  'text-sm font-game tracking-widest mb-2 opacity-80',
+                  variant === 'gold' && 'text-brand-gold',
+                  variant === 'dragon' && 'text-blue-400',
+                  variant === 'game' && 'text-pink-400',
+                )}
+              >
+                {subtitle}
+              </p>
             )}
-          />
+
+            <div
+              className={cn(
+                'w-full h-px',
+                variant === 'gold' && 'bg-gradient-to-r from-yellow-500/50 via-yellow-500/20 to-transparent',
+                variant === 'dragon' && 'bg-gradient-to-r from-blue-500/50 via-blue-500/20 to-transparent',
+                variant === 'game' && 'bg-gradient-to-r from-pink-500/50 via-pink-500/20 to-transparent',
+                reverse && 'xl:bg-gradient-to-l'
+              )}
+            />
+          </div>
+
+          <div className="w-full h-px bg-white/5" />
 
           <ul className="space-y-3">
             {features.map((feature, idx) => (
@@ -268,12 +271,15 @@ export function FeatureCard({
               >
                 <span
                   className={cn(
-                    'flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2',
-                    variant === 'gold' && 'bg-brand-gold',
-                    variant === 'dragon' && 'bg-blue-400',
-                    variant === 'game' && 'bg-pink-400',
+                    'flex-shrink-0 text-lg leading-none',
+                    variant === 'gold' && 'text-brand-gold',
+                    variant === 'dragon' && 'text-blue-400',
+                    variant === 'game' && 'text-pink-400',
+                    variant === 'default' && 'text-white/70'
                   )}
-                />
+                >
+                  ·
+                </span>
                 <span>{feature}</span>
               </li>
             ))}

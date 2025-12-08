@@ -9,9 +9,9 @@ interface SectionProps {
 }
 
 /**
- * 📦 区块容器
+ * 📦 區塊容器
  *
- * 用于包裹页面的各个section
+ * 用於包裹頁面的各個section
  */
 export function Section({
   children,
@@ -37,7 +37,7 @@ export function Section({
 /**
  * 📦 容器
  *
- * 限制最大宽度并居中
+ * 限制最大寬度並居中
  */
 export function Container({
   children,

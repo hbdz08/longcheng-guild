@@ -1,110 +1,110 @@
-# 🚀 快速开始 - 5分钟上手
+# 🚀 快速開始 - 5分鐘上手
 
 ## 第一步:查看效果 (30秒)
 
-开发服务器已启动,直接访问:
+開發服務器已啓動,直接訪問:
 
 ```
 http://localhost:3000
 ```
 
-你会看到一个**完全用CSS实现**的游戏公会首页,包含:
-- 🎨 渐变标题和发光按钮
-- 💳 悬浮卡片效果
-- 📱 完美响应式布局
-- ✨ 流畅的交互动画
+你會看到一個**完全用CSS實現**的遊戲公會首頁,包含:
+- 🎨 漸變標題和發光按鈕
+- 💳 懸浮卡片效果
+- 📱 完美響應式佈局
+- ✨ 流暢的交互動畫
 
 ---
 
-## 第二步:测试响应式 (2分钟)
+## 第二步:測試響應式 (2分鐘)
 
-### 方法1:浏览器开发者工具
-1. 按 `F12` 打开开发者工具
-2. 点击左上角的"设备模拟"图标 (手机图标)
-3. 拖动宽度条从 **320px → 2560px**
+### 方法1:瀏覽器開發者工具
+1. 按 `F12` 打開開發者工具
+2. 點擊左上角的"設備模擬"圖標 (手機圖標)
+3. 拖動寬度條從 **320px → 2560px**
 
-**观察变化:**
-- 标题字体平滑缩放 (不会突变)
-- 卡片布局自动调整列数
-- 按钮尺寸自动适配
-- 间距自动优化
+**觀察變化:**
+- 標題字體平滑縮放 (不會突變)
+- 卡片佈局自動調整列數
+- 按鈕尺寸自動適配
+- 間距自動優化
 
-### 方法2:调整浏览器窗口
-直接拖动浏览器窗口边缘,从最小拉到最大
+### 方法2:調整瀏覽器窗口
+直接拖動瀏覽器窗口邊緣,從最小拉到最大
 
 ---
 
-## 第三步:修改内容 (2分钟)
+## 第三步:修改內容 (2分鐘)
 
-### 修改主标题
-打开 `src/app/page.tsx`,找到第25行:
+### 修改主標題
+打開 `src/app/page.tsx`,找到第25行:
 
 ```tsx
 <GameTitle variant="dragon" size="2xl" as="h1" glow>
-  龙成游戏公会  {/* 👈 改成你的公会名 */}
+  龍成遊戲公會  {/* 👈 改成你的公會名 */}
 </GameTitle>
 ```
 
-保存后浏览器会自动刷新!
+保存後瀏覽器會自動刷新!
 
-### 修改按钮文字
+### 修改按鈕文字
 找到第33行:
 
 ```tsx
 <GameButton variant="gold" size="xl">
-  立即加入公会 🚀  {/* 👈 改成你想要的文字 */}
+  立即加入公會 🚀  {/* 👈 改成你想要的文字 */}
 </GameButton>
 ```
 
-### 修改颜色变体
+### 修改顏色變體
 ```tsx
-// 改成蓝色渐变
+// 改成藍色漸變
 <GameTitle variant="dragon">
 
-// 改成粉色渐变
+// 改成粉色漸變
 <GameButton variant="game">
 
-// 改成金色渐变
+// 改成金色漸變
 <GameCard variant="gold">
 ```
 
 ---
 
-## 核心优势
+## 核心優勢
 
-### 🆚 vs 图片堆砌的旧方式
+### 🆚 vs 圖片堆砌的舊方式
 
-| 操作 | 旧方式 | 新方式 | 提升 |
+| 操作 | 舊方式 | 新方式 | 提升 |
 |------|--------|--------|------|
-| **改标题文字** | 找设计师切图→30分钟 | 改代码→30秒 | ⚡ 60倍 |
-| **改按钮颜色** | 重新切图→20分钟 | 改variant→10秒 | ⚡ 120倍 |
-| **添加新卡片** | 切图+调整位置→1小时 | 复制组件→2分钟 | ⚡ 30倍 |
-| **响应式适配** | 每个分辨率切图→2天 | 自动适配→0秒 | ⚡ 无限 |
+| **改標題文字** | 找設計師切圖→30分鐘 | 改代碼→30秒 | ⚡ 60倍 |
+| **改按鈕顏色** | 重新切圖→20分鐘 | 改variant→10秒 | ⚡ 120倍 |
+| **添加新卡片** | 切圖+調整位置→1小時 | 複製組件→2分鐘 | ⚡ 30倍 |
+| **響應式適配** | 每個分辨率切圖→2天 | 自動適配→0秒 | ⚡ 無限 |
 
 ---
 
-## 可用组件
+## 可用組件
 
-### 1. GameButton (按钮)
+### 1. GameButton (按鈕)
 ```tsx
 <GameButton
   variant="gold"    // gold | dragon | game | outline | ghost
   size="lg"         // sm | md | lg | xl
   onClick={() => {}}
 >
-  按钮文字
+  按鈕文字
 </GameButton>
 ```
 
-### 2. GameTitle (标题)
+### 2. GameTitle (標題)
 ```tsx
 <GameTitle
   variant="dragon"  // dragon | gold | game
   size="xl"         // sm | md | lg | xl | 2xl
   as="h1"          // h1 | h2 | h3 | h4 | h5 | h6
-  glow             // 是否发光
+  glow             // 是否發光
 >
-  标题文字
+  標題文字
 </GameTitle>
 ```
 
@@ -112,15 +112,15 @@ http://localhost:3000
 ```tsx
 <GameCard
   icon="🎮"
-  title="卡片标题"
+  title="卡片標題"
   description="卡片描述"
   variant="gold"   // default | gold | dragon | game
 />
 ```
 
-### 4. GameCardGrid (卡片网格)
+### 4. GameCardGrid (卡片網格)
 ```tsx
-<GameCardGrid cols={2}>  {/* 2 | 3 | 4 或不设置(自动) */}
+<GameCardGrid cols={2}>  {/* 2 | 3 | 4 或不設置(自動) */}
   <GameCard />
   <GameCard />
 </GameCardGrid>
@@ -128,58 +128,58 @@ http://localhost:3000
 
 ---
 
-## 常见问题
+## 常見問題
 
-### Q: 如何添加背景图?
+### Q: 如何添加背景圖?
 ```tsx
 <Section className="relative">
-  {/* 背景层 */}
+  {/* 背景層 */}
   <div className="absolute inset-0">
     <img src="/bg.jpg" alt="" className="w-full h-full object-cover" />
   </div>
 
-  {/* 内容层 */}
+  {/* 內容層 */}
   <div className="relative z-10">
-    内容
+    內容
   </div>
 </Section>
 ```
 
 ### Q: 如何修改品牌色?
-编辑 `tailwind.config.js` 第15行:
+編輯 `tailwind.config.js` 第15行:
 ```js
 colors: {
   brand: {
-    gold: '#d97706',    // 👈 改成你的颜色
+    gold: '#d97706',    // 👈 改成你的顏色
     dragon: '#3b82f6',
     game: '#ec4899',
   }
 }
 ```
 
-### Q: 如何添加新页面?
+### Q: 如何添加新頁面?
 ```bash
-# 创建文件
+# 創建文件
 src/app/about/page.tsx
 
-# 内容
+# 內容
 export default function AboutPage() {
-  return <div>关于我们</div>
+  return <div>關於我們</div>
 }
 
-# 访问
+# 訪問
 http://localhost:3000/about
 ```
 
 ---
 
-## 下一步学习
+## 下一步學習
 
-1. **查看完整文档** - [PROJECT_GUIDE.md](PROJECT_GUIDE.md)
+1. **查看完整文檔** - [PROJECT_GUIDE.md](PROJECT_GUIDE.md)
 2. **查看README** - [README.md](README.md)
-3. **学习Tailwind** - https://tailwindcss.com/docs
-4. **学习Next.js** - https://nextjs.org/docs
+3. **學習Tailwind** - https://tailwindcss.com/docs
+4. **學習Next.js** - https://nextjs.org/docs
 
 ---
 
-**现在就去 http://localhost:3000 试试吧!** 🎉
+**現在就去 http://localhost:3000 試試吧!** 🎉

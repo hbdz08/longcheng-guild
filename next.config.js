@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 图片优化配置
+  // 圖片優化配置
   images: {
     remotePatterns: [
       {
@@ -9,7 +9,7 @@ const nextConfig = {
       },
     ],
   },
-  // 严格模式
+  // 嚴格模式
   reactStrictMode: true,
 }
 

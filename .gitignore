@@ -4,13 +4,13 @@ out
 dist
 build
 
-# 环境变量
+# 環境變量
 .env*.local
 
-# 日志
+# 日誌
 *.log
 
-# 操作系统
+# 操作系統
 .DS_Store
 Thumbs.db
 

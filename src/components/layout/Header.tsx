@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 
@@ -7,7 +8,7 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navItems = [
-    { label: '首页', href: '#hero' },
+    { label: '首頁', href: '#hero' },
     { label: '核心優勢', href: '#advantages' },
     { label: '爲什麼選擇我們', href: '#why-us' },
     { label: '加入我們', href: '#cta' },
@@ -23,19 +24,25 @@ export function Header() {
             className="flex items-center gap-3 group"
           >
             <div className="relative">
-              {/* 发光效果 */}
-              <div className="absolute inset-0 bg-brand-gold/20 blur-xl rounded-full group-hover:bg-brand-gold/40 transition-all" />
+              
 
-              {/* Logo图标 */}
-              <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-dragon flex items-center justify-center font-game font-bold text-white text-xl md:text-2xl shadow-glow-blue">
-              龍
+              {/* Logo圖標 */}
+              <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full     overflow-hidden ring-1 ring-white/15">
+                <Image
+                  src="/image/lb@2x.png"
+                  alt="龍成遊戲公會"
+                  fill
+                  sizes="3rem"
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
 
             
           </a>
 
-          {/* 桌面端导航 */}
+          {/* 桌面端導航 */}
           <div className="hidden md:flex items-center gap-2 lg:gap-4">
             {navItems.map((item) => (
               <a
@@ -44,14 +51,14 @@ export function Header() {
                 className="px-4 py-2 text-dark-300 hover:text-white transition-colors relative group"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-gold scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-gray scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
               </a>
             ))}
 
              
           </div>
 
-          {/* 移动端菜单按钮 */}
+          {/* 移動端菜單按鈕 */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
@@ -75,7 +82,7 @@ export function Header() {
           </button>
         </div>
 
-        {/* 移动端导航菜单 */}
+        {/* 移動端導航菜單 */}
         <div
           className={cn(
             'md:hidden overflow-hidden transition-all duration-300',
@@ -94,13 +101,7 @@ export function Header() {
               </a>
             ))}
 
-            <a
-              href="#cta"
-              onClick={() => setIsMenuOpen(false)}
-              className="block mx-4 mt-4 px-6 py-3 text-center rounded-full bg-gradient-gold text-white font-bold hover:shadow-glow-gold transition-all"
-            >
-              立即加入
-            </a>
+            
           </div>
         </div>
       </nav>

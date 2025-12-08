@@ -11,13 +11,13 @@ interface GameTitleProps {
 }
 
 /**
- * 🎯 游戏风格标题
+ * 🎯 遊戲風格標題
  *
  * 特性:
- * - 渐变文字效果
- * - 流体字体大小 (clamp)
- * - 发光阴影
- * - 语义化 HTML 标签
+ * - 漸變文字效果
+ * - 流體字體大小 (clamp)
+ * - 發光陰影
+ * - 語義化 HTML 標籤
  */
 export function GameTitle({
   children,
@@ -30,11 +30,11 @@ export function GameTitle({
   return (
     <Component
       className={cn(
-        // 基础样式
+        // 基礎樣式
         'font-game font-bold text-center',
         'bg-clip-text text-transparent',
 
-        // 流体字体大小
+        // 流體字體大小
         size === 'sm' && 'text-[clamp(1.25rem,3vw,1.75rem)] mb-4',
         size === 'md' && 'text-[clamp(1.75rem,4vw,2.5rem)] mb-6',
         size === 'lg' && 'text-[clamp(2.25rem,5vw,3.5rem)] mb-8',
@@ -52,7 +52,7 @@ export function GameTitle({
 }
 
 /**
- * 🎯 副标题组件
+ * 🎯 副標題組件
  */
 export function GameSubtitle({
   children,

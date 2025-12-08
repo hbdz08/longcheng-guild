@@ -5,13 +5,13 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: '龙成游戏公会 | 好游戏的搬运工',
-  description: '成立于2014年,服务100万+玩家的专业游戏公会。专业会长指导,花钱更值,兄弟并肩作战。',
-  keywords: ['游戏公会', '龙成', 'MMORPG', '手游', '网游', '游戏社区'],
-  authors: [{ name: '龙成游戏公会' }],
+  title: '龍成遊戲公會 | 好遊戲的搬運工',
+  description: '成立於2014年,服務100萬+玩家的專業遊戲公會。專業會長指導,花錢更值,兄弟並肩作戰。',
+  keywords: ['遊戲公會', '龍成', 'MMORPG', '手遊', '網遊', '遊戲社區'],
+  authors: [{ name: '龍成遊戲公會' }],
   openGraph: {
-    title: '龙成游戏公会 | 好游戏的搬运工',
-    description: '成立于2014年,服务100万+玩家',
+    title: '龍成遊戲公會 | 好遊戲的搬運工',
+    description: '成立於2014年,服務100萬+玩家',
     type: 'website',
   },
 }
