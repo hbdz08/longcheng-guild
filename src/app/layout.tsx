@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+// import { Inter } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: '龍成遊戲公會 | 好遊戲的搬運工',
@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN" className="overflow-x-hidden">
-      <body className={`${inter.className} overflow-x-hidden`}>
+      <body className={`  overflow-x-hidden`}>
         {children}
       </body>
     </html>
