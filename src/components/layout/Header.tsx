@@ -29,7 +29,7 @@ export function Header() {
               {/* Logo圖標 */}
               <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full     overflow-hidden ring-1 ring-white/15">
                 <Image
-                  src="/image/lb@2x.png"
+                  src="https://image.xixingwangluokeji.cn/image/lb@2x.png"
                   alt="龍成遊戲公會"
                   fill
                   sizes="3rem"

@@ -297,7 +297,7 @@ export default function HomePage() {
             <div className="relative   flex justify-center  ">
               <div className="relative w-20 sm:w-22 md:w-24 lg:w-[8rem] 2xl:w-[15rem]">
                 <Image
-                  src="/image/sy2014@2x.png"
+                  src="https://image.xixingwangluokeji.cn/image/sy2014@2x.png"
                   alt="始於 2014"
                   width={704}
                   height={176}
@@ -353,7 +353,7 @@ export default function HomePage() {
                 
                 <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden  bg-black/40 backdrop-blur-sm">
                   <Image
-                    src="/image/lr_1@2x.png"
+                    src="https://image.xixingwangluokeji.cn/image/lr_1@2x.png"
                     alt="龍成公會成員展示"
                     fill
                     className="object-contain hover:scale-105 transition-transform duration-700"
@@ -378,7 +378,7 @@ export default function HomePage() {
               {/* 装饰图片 - 作为背景 */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] md:w-full md:max-w-3xl lg:max-w-4xl h-auto pointer-events-none">
                 <Image
-                  src="/image/btd@2x.png"
+                  src="https://image.xixingwangluokeji.cn/image/btd@2x.png"
                   alt=""
                   width={1200}
                   height={300}
@@ -395,7 +395,7 @@ export default function HomePage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
               <FeatureCard
-                image="/image/lr_2@2x.png"
+                image="https://image.xixingwangluokeji.cn/image/lr_2@2x.png"
                 title="遊戲體驗層面"
                 subtitle="GAME EXPERIENCE"
                 variant="default"
@@ -408,7 +408,7 @@ export default function HomePage() {
               />
 
               <FeatureCard
-                image="/image/lr_3@2x.png"
+                image="https://image.xixingwangluokeji.cn/image/lr_3@2x.png"
                 title="經濟與福利層面"
                 subtitle="ECONOMY & BENEFITS"
                 variant="default"
@@ -421,7 +421,7 @@ export default function HomePage() {
               />
 
               <FeatureCard
-                image="/image/lr_4@2x.png"
+                image="https://image.xixingwangluokeji.cn/image/lr_4@2x.png"
                 title="戰鬥與社交層面"
                 subtitle="BATTLE & SOCIAL"
                 variant="default"
@@ -434,7 +434,7 @@ export default function HomePage() {
               />
 
               <FeatureCard
-                image="/image/lr_5@2x.png"
+                image="https://image.xixingwangluokeji.cn/image/lr_5@2x.png"
                 title="榮耀與成就層面"
                 subtitle="HONOR & ACHIEVEMENT"
                 variant="default"
@@ -447,7 +447,7 @@ export default function HomePage() {
 
               <FeatureCard
                 className="lg:col-span-2"
-                image="/image/lr_6@2x.png"
+                image="https://image.xixingwangluokeji.cn/image/lr_6@2x.png"
                 imageClassName="md:w-1/3 lg:w-1/3 max-w-md"
                 title="特別優勢"
                 subtitle="CORE ADVANTAGE"
@@ -625,7 +625,7 @@ export default function HomePage() {
               {/* 装饰图片 - 作为背景 */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] md:w-full md:max-w-3xl lg:max-w-4xl h-auto pointer-events-none">
                 <Image
-                  src="/image/btd@2x.png"
+                  src="https://image.xixingwangluokeji.cn/image/btd@2x.png"
                   alt=""
                   width={1200}
                   height={300}
