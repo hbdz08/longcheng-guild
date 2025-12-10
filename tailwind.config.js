@@ -31,7 +31,7 @@ module.exports = {
         'gradient-game': 'linear-gradient(135deg, #ec4899 0%, #3b82f6 100%)',
         'gradient-gold': 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)',
         'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',
-        'gradient-gray': 'linear-gradient(135deg,rgb(255, 255, 255) 0%,rgb(218, 218, 217) 100%)',
+        'gradient-gray': 'linear-gradient(135deg, rgb(218, 218, 217) 0%,rgb(255, 255, 255) 100%)',
       },
 
       // 🌟 發光陰影

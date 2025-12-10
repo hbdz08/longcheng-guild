@@ -36,8 +36,8 @@ export function GameTitle({
 
         // 流體字體大小
         size === 'sm' && 'text-[clamp(1.25rem,3vw,1.75rem)] mb-4',
-        size === 'md' && 'text-[clamp(1.75rem,4vw,2.5rem)] mb-6',
-        size === 'lg' && 'text-[clamp(2.25rem,5vw,3.5rem)] mb-8',
+        size === 'md' && 'text-[clamp(1.75rem,4vw,2.5rem)] mt-6 md:mt-10 sm:mt-8',
+        size === 'lg' && 'text-[clamp(2.25rem,5vw,3.5rem)] mb-8 ',
         size === 'xl' && 'text-[clamp(2.75rem,6vw,4.5rem)] mb-10',
         size === '2xl' && 'text-[clamp(3.25rem,7vw,5.5rem)] mb-12',
 

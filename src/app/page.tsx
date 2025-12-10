@@ -105,6 +105,23 @@ export default function HomePage() {
 
   const getBoardLikes = (seed: number) => (seed * 17) % 90 + 18
 
+  // 星星位置：桌面與行動端分開定義，避免不同分辨率錯位
+  const titleStarsDesktop = [
+    { id: 1, top: '52%', left: '-3%', size: 40, delay: '0s' },
+    { id: 2, top: '-1%', left: '12%', size: 40, delay: '0.3s' },
+    { id: 3, top: '16%', left: '44%', size: 40, delay: '0.6s' },
+    { id: 4, top: '18%', left: '62%', size: 40, delay: '0.9s' },
+    { id: 5, top: '-5%', left: '93%', size: 40, delay: '1.1s' },
+  ]
+
+  const titleStarsMobile = [
+    { id: 1, top: '34%', left: '-7%', size: 40, delay: '0s' },
+    { id: 2, top: '-12%', left: '9%', size: 40, delay: '0.3s' },
+    { id: 3, top: '1%', left: '40%', size: 40, delay: '0.6s' },
+    { id: 4, top: '2%', left: '59%', size: 40, delay: '0.9s' },
+    { id: 5, top: '-15%', left: '89%', size: 40, delay: '1.1s' },
+  ]
+
   const pauseBoardAutoScroll = () => {
     if (boardResumeTimeoutRef.current) {
       clearTimeout(boardResumeTimeoutRef.current)
@@ -267,12 +284,12 @@ export default function HomePage() {
             className={cn(
               "absolute left-0 right-0 z-20",
               "flex flex-col items-center justify-end",
-              "bottom-[8%] md:bottom-[1%] 2xl:bottom-[5%]", 
+              "bottom-[2%] md:bottom-[1%] 2xl:bottom-[5%] sm:bottom-[1%]", 
               "md:gap-2" 
             )}
           >
              {/* 標語 */}
-            <p className="text-sm md:text-2xl text-white font-bold  text-center px-4 metal-gradient-title">
+            <p className="text-sm md:text-2xl 2xl:text-6xl text-white font-bold  text-center px-4 metal-gradient-title">
               跟對公會,遊戲才真正好玩!
             </p>
             {/* 按鈕 */}
@@ -282,7 +299,7 @@ export default function HomePage() {
                   "relative z-10 cursor-pointer transition-transform duration-200 hover:scale-105 active:scale-95",
                   "bg-transparent border-none shadow-none flex items-center justify-center",
                   "bg-[url('https://image.xixingwangluokeji.cn/desktop/ljjr_1.png')] bg-contain bg-center bg-no-repeat",
-                  "w-[140px] h-[16px] sm:w-[180px] sm:h-[20px] md:w-[260px] md:h-[72px]",   
+                  "w-[140px] h-[16px] sm:w-[180px] sm:h-[20px] md:w-[260px] md:h-[72px] 2xl:w-[560px]",   
                   "text-transparent select-none" 
                 )}
                 onClick={() => console.log('立即加入')}
@@ -295,7 +312,7 @@ export default function HomePage() {
 
             {/* 徽章 */}
             <div className="relative   flex justify-center  ">
-              <div className="relative w-20 sm:w-22 md:w-24 lg:w-[8rem] 2xl:w-[15rem]">
+              <div className="relative w-16 sm:w-22 md:w-24 lg:w-[6rem] 2xl:w-[10rem]">
                 <Image
                   src="https://image.xixingwangluokeji.cn/image/sy2014@2x.png"
                   alt="始於 2014"
@@ -306,8 +323,22 @@ export default function HomePage() {
                 />
               </div>
             </div>
+            
           </div>
+          
         </Section>
+
+        {/* Hero 下方裝飾條 */}
+        <div className="relative w-full">
+          <Image
+            src="https://image.xixingwangluokeji.cn/image/fgx_1@2x.png"
+            alt="裝飾條"
+            width={1920}
+            height={120}
+            className="w-full h-auto"
+            priority
+          />
+        </div>
 
         {/* =========================================
             2. 📜 公會介紹 (左文右圖) - 新增區塊
@@ -319,17 +350,69 @@ export default function HomePage() {
               {/* 左側：文字內容 */}
               {/* 👇【修改點】：添加 px-4 防止手機端文字頂邊，添加 md:px-0 在桌面端復原 */}
               <div className="flex-1 space-y-6 text-center lg:text-left z-10 px-4 md:px-0">
-                <div>
+                <div className="relative inline-flex flex-col items-center lg:items-start">
                   {/* 主標題 */}
-                  <h2 className="text-4xl md:text-6xl font-bold mb-2 font-serif metal-gradient-title">
-                    龍城遊戲公會
-                  </h2>
+                  <div className="relative inline-block">
+                    <h2 className="text-4xl md:text-6xl font-bold mb-2 font-serif metal-gradient-title relative z-10">
+                      龍城遊戲公會
+                    </h2>
+                    <div className="pointer-events-none absolute inset-0">
+                      {/* Mobile stars */}
+                      {titleStarsMobile.map((star) => (
+                        <div
+                          key={`m-${star.id}`}
+                          className="absolute animate-pulse sm:hidden"
+                          style={{
+                            top: star.top,
+                            left: star.left,
+                            width: `${star.size}px`,
+                            height: `${star.size}px`,
+                            animationDelay: star.delay,
+                          }}
+                        >
+                          <Image
+                            src="https://image.xixingwangluokeji.cn/image/xx_2@2x.png"
+                            alt="title star"
+                            fill
+                            sizes="32px"
+                            className="object-contain drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]"
+                          />
+                        </div>
+                      ))}
+
+                      {/* Desktop stars */}
+                      {titleStarsDesktop.map((star) => (
+                        <div
+                          key={`d-${star.id}`}
+                          className="absolute animate-pulse hidden sm:block"
+                          style={{
+                            top: star.top,
+                            left: star.left,
+                            width: `${star.size}px`,
+                            height: `${star.size}px`,
+                            animationDelay: star.delay,
+                          }}
+                        >
+                          <Image
+                            src="https://image.xixingwangluokeji.cn/image/xx_2@2x.png"
+                            alt="title star"
+                            fill
+                            sizes="28px"
+                            className="object-contain drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
                   {/* 副標題 */}
-                  <p className="text-sm md:text-lg font-bold uppercase tracking-[0.5em] md:tracking-[0.8em] pl-1 purple-gradient-subtitle">
-                    GAME GUILD
+                  <p className="text-sm md:text-lg font-bold uppercase tracking-[0.5em] md:tracking-[0.8em] pl-1">
+                    <span className="inline-block origin-center scale-y-110 md:scale-y-125 purple-gradient-subtitle">
+                      GAME GUILD
+                    </span>
                   </p>
                 </div>
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-brand-gray/80 to-black" />
                 
                 <div className="text-gray-300 leading-relaxed text-sm md:text-[15px] text-justify indent-0 md:indent-8 opacity-90 font-light tracking-wide">
                   <p>
@@ -344,19 +427,20 @@ export default function HomePage() {
                     另外，讓每位玩家充值的每一分錢都能花在刀刃上，能花小錢辦大事，用最小量的資金幫助你提升更高的戰力。另外，因爲我們是一隻由會長+玩家組織的團隊，可以跟遊戲官方建立合作，獲取更多的遊戲官方禮包碼，所以我們能獲得更優質的資源，這些都是散人玩家獲取不到的資源。這裏不只是遊戲，更是一個家。一起聊天、一起並肩作戰，遊戲變得更有趣！
                   </p>
                 </div>
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-brand-gray/80 to-black" />
               </div>
 
               {/* 右側：圖片/插畫 */}
               {/* 👇【建議】：給圖片容器也加個 px-4，防止手機端圖片邊框貼屏幕太緊 */}
-              <div className="flex-1 w-full max-w-md lg:max-w-none relative group px-4 md:px-0 overflow-hidden">
+              <div className="flex-1 w-full max-w-[720px] lg:max-w-none min-w-[320px] mx-auto relative group px-0 sm:px-4 md:px-0 overflow-hidden">
                 <div className="absolute -inset-1 bg-gradient-to-b from-brand-gold/20 to-transparent rounded-lg blur-sm opacity-50" />
                 
-                <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden  bg-black/40 backdrop-blur-sm">
+                <div className="relative w-full min-h-[520px] lg:min-h-[680px] rounded-lg overflow-hidden bg-black/40 backdrop-blur-sm">
                   <Image
                     src="https://image.xixingwangluokeji.cn/image/lr_1@2x.png"
-                    alt="龍成公會成員展示"
+                    alt="龍成公會展示"
                     fill
-                    className="object-contain hover:scale-105 transition-transform duration-700"
+                    className="object-contain sm:object-cover hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
@@ -390,6 +474,12 @@ export default function HomePage() {
               {/* 标题内容 */}
               <div className="relative z-10 py-8">
                 <GameTitle variant="gold" size="md" as="h2">核心優勢</GameTitle>
+                <p
+                  className="mx-auto mt-0 sm:mt-0 max-w-[320px] sm:max-w-[560px] text-center text-[14px] sm:text-[17px] font-normal leading-[24px] sm:leading-[46px] tracking-[0.08em] sm:tracking-[0.12em] text-[#404040]"
+                  style={{ fontFamily: '"Heir of Light", "HeirofLightRegular", "Inter", "Noto Sans SC", "ui-sans-serif", "system-ui", "sans-serif"' }}
+                >
+                  CORE ADVANTAGE
+                </p>
               </div>
             </div>
 
@@ -448,7 +538,7 @@ export default function HomePage() {
               <FeatureCard
                 className="lg:col-span-2"
                 image="https://image.xixingwangluokeji.cn/image/lr_6@2x.png"
-                imageClassName="md:w-1/3 lg:w-1/3 max-w-md"
+                imageClassName="    max-w-md"
                 title="特別優勢"
                 subtitle="CORE ADVANTAGE"
                 variant="default"
@@ -635,8 +725,14 @@ export default function HomePage() {
               </div>
 
               {/* 标题内容 */}
-              <div className="relative z-10 py-8">
-              <GameTitle variant="gold" size="md" as="h2" className="mb-8 text-white">公會留言板</GameTitle>
+              <div className="relative z-10 py-4">
+              <GameTitle variant="gold" size="md" as="h2" className=" text-white">公會留言板</GameTitle>
+              <p
+                  className="mx-auto mt-0 sm:mt-0 max-w-[320px] sm:max-w-[560px] text-center text-[14px] sm:text-[17px] font-normal leading-[24px] sm:leading-[46px] tracking-[0.08em] sm:tracking-[0.12em] text-[#404040]"
+                  style={{ fontFamily: '"Heir of Light", "HeirofLightRegular", "Inter", "Noto Sans SC", "ui-sans-serif", "system-ui", "sans-serif"' }}
+                >
+                  COMMENT BOARD
+                </p>
               </div>
             </div>
          

@@ -175,9 +175,9 @@ export function FeatureCard({
     <div
       className={cn(
         'group relative overflow-hidden',
-        'rounded-[30px] border border-white/10',
-        'bg-gradient-to-b from-black/80 via-brand-dark/80 to-black/95',
-        'shadow-[0_30px_60px_rgba(0,0,0,0.45)]',
+        'rounded-[30px] border border-white/10 ring-1 ring-white/5',
+        'bg-gradient-to-b from-[#1b1b1b] via-[#0f0f0f] to-black',
+        'shadow-[0_30px_70px_rgba(0,0,0,0.55)]',
         className
       )}
     >
@@ -191,6 +191,8 @@ export function FeatureCard({
           variant === 'default' && 'bg-[radial-gradient(circle_at_top,_rgba(148,148,148,0.2),_transparent_55%)]'
         )}
       />
+      <div className="pointer-events-none absolute inset-0 rounded-[30px] bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.07),transparent_45%),radial-gradient(circle_at_75%_25%,rgba(255,255,255,0.05),transparent_40%)] opacity-70 mix-blend-screen" />
+      <div className="pointer-events-none absolute inset-px rounded-[28px] bg-gradient-to-b from-white/10 via-transparent to-white/5 opacity-60" />
 
       <div
         className={cn(
