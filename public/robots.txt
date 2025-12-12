@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://www.manmanyouhudong.com/sitemap.xml
-Host: www.manmanyouhudong.com
