@@ -112,60 +112,30 @@ export default function HomePage() {
       title: '透過 ID 搜尋',
       steps: [
         {
-          id: '1-1',
-          title: '複製 LINE ID',
-          desc: '點擊按鈕複製 ID，於「加入好友 > ID 搜尋」貼上並搜尋。',
-          action: 'copy',
-          image: 'https://image.xixingwangluokeji.cn/image/tu_1@2x.png',
-        },
-        {
-          id: '1-2',
-          title: '搜尋並加入',
-          desc: '貼上 ID 後搜尋，點擊加入好友並留言「我要加入龍成」。',
+          id: '1',
+          title: '打開 LINE',
+          desc: '打開手機的 LINE 應用。',
           action: 'open',
-          image: 'https://image.xixingwangluokeji.cn/image/tu_3@2x.png',
-        },
-      ],
-    },
-    {
-      title: '掃描 QR Code',
-      steps: [
-        {
-          id: '2-1',
-          title: '查看 / 保存 QR',
-          desc: '長按圖片保存或直接掃描 QR。',
-          action: 'qr',
-          image: 'https://image.xixingwangluokeji.cn/image/tu_2@2x.png',
-        },
-        {
-          id: '2-2',
-          title: '掃描並加入',
-          desc: '在 LINE > 掃描 QR，掃描後加入好友並留言「我要加入龍成」。',
-          action: 'none',
-          image: 'https://image.xixingwangluokeji.cn/image/tu_3@2x.png',
-        },
-      ],
-    },
-    {
-      title: '手機端一鍵打開 LINE',
-      steps: [
-        {
-          id: '3-1',
-          title: '點擊按鈕喚起 LINE',
-          desc: '未安裝會跳至下載；安裝後直接跳轉到加好友頁面。',
-          action: 'deep-link',
-          image: 'https://image.xixingwangluokeji.cn/image/tu_3@2x.png',
-        },
-        {
-          id: '3-2',
-          title: '留言完成加入',
-          desc: '加入後留言「我要加入龍成」，會長將協助接待。',
-          action: 'none',
           image: 'https://image.xixingwangluokeji.cn/image/tu_1@2x.png',
+        },
+        {
+          id: '2',
+          title: '搜尋 @605ygnhp 並加入',
+          desc: '點擊按鈕複製 ID，於「加入好友 > ID 搜尋」貼上並搜尋',
+          action: 'copy',
+          image: 'https://image.xixingwangluokeji.cn/image/tu_3@2x.png',
+        },
+        {
+          id: '3',
+          title: '添加好友',
+          desc: '添加後留言「我要加入龍成」，會長將協助接待。',
+          action: 'none',
+          image: 'https://image.xixingwangluokeji.cn/image/tu_2@2x.png',
         },
       ],
     },
   ]
+
 
   const openJoinModal = () => {
     setIsJoinModalOpen(true)
@@ -935,88 +905,96 @@ export default function HomePage() {
         </Section>
 
         {isJoinModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center px-2 sm:px-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center px-3 sm:px-5">
             <div
-              className="absolute inset-0 bg-black/75 backdrop-blur-md"
+              className="absolute inset-0 bg-black/10 backdrop-blur-xl"
               onClick={closeJoinModal}
             />
-            <div className="relative w-full max-w-[520px] sm:max-w-4xl max-h-[92vh] overflow-y-auto rounded-[20px] sm:rounded-[28px] border border-white/10 bg-gradient-to-br from-[#0d0d11] via-[#11131b] to-[#0a0a0a] p-3 sm:p-6 md:p-7 shadow-[0_35px_90px_rgba(0,0,0,0.6)]">
-              <div className="absolute inset-0 rounded-[20px] sm:rounded-[28px] bg-[radial-gradient(circle_at_20%_15%,rgba(255,255,255,0.08),transparent_45%),radial-gradient(circle_at_80%_10%,rgba(255,184,0,0.12),transparent_40%)] opacity-70 pointer-events-none" />
-              <div className="relative flex flex-col gap-5">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div className="relative w-full max-w-7xl max-h-[90vh] overflow-y-auto">
+              <div className="absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.08),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(255,184,0,0.2),transparent_45%)] blur-3xl opacity-70 pointer-events-none" />
+              <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-b from-[#0b0d14] via-[#0a0c16] to-[#060608] p-6 sm:p-8 lg:p-10 shadow-[0_40px_100px_rgba(0,0,0,0.65)] space-y-7">
+                <div className="flex items-start justify-between gap-3">
                   <div className="space-y-2">
-                    <p className="text-xs tracking-[0.4em] text-white/60 uppercase">Join us on LINE</p>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">立即加入 · LINE 搜尋指引</h3>
-                    <p className="text-sm text-gray-300">3 步驟，立刻在 LINE 找到我們。</p>
+                    <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.32em] text-white/70">
+                      LINE 加入指南
+                    </p>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">3 步就能聯絡上我們</h3>
+                   
                   </div>
                   <button
                     onClick={closeJoinModal}
-                    className="self-end inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white hover:border-brand-gold transition"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 transition hover:border-brand-gold hover:text-white"
                     aria-label="Close"
                   >
-                    ✕
+                    ×
                   </button>
                 </div>
 
-                <div className="grid gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-3 sm:p-4 md:p-5">
-                  {joinSections.map((section, idx) => (
-                    <div key={section.title} className="space-y-3 rounded-2xl border border-white/10 bg-black/35 p-3 sm:p-4">
-                      <div className="flex items-center gap-3">
-                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-brand-gold/70 to-amber-500/70 text-black font-bold shadow-[0_8px_18px_rgba(255,184,0,0.4)]">
-                          {idx + 1}
-                        </span>
-                        <p className="text-lg sm:text-xl font-semibold text-white">{section.title}</p>
-                      </div>
-
-                      <div className="grid gap-3 divide-y divide-white/5">
+                <div className="space-y-3">
+                  {joinSections.map((section) => (
+                    <div key={section.title} className="space-y-4 rounded-2xl border border-white/10 bg-black/35 p-4 sm:p-5 shadow-[0_16px_40px_rgba(0,0,0,0.35)]">
+                      <p className="text-lg sm:text-xl font-semibold text-white">{section.title}</p>
+                      <div className="grid gap-3 sm:gap-4 md:grid-cols-3">
                         {section.steps.map((step) => (
-                          <div key={step.id} className="pt-3 first:pt-0 grid gap-3 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-                            <div className="space-y-1.5">
-                              <p className="text-base text-white font-semibold">{step.title}</p>
-                              <p className="text-sm text-gray-300">{step.desc}</p>
-
+                          <div
+                            key={step.id}
+                            className="flex flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-3 sm:p-4 h-full"
+                          >
+                            <div className="flex items-start gap-2">
+                              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-brand-gold to-amber-300 text-sm font-black text-brand-dark shadow-[0_8px_18px_rgba(255,184,0,0.3)]">
+                                {step.id}
+                              </span>
+                              <div className="space-y-1">
+                                <p className="text-base font-semibold text-white">{step.title}</p>
+                                <p className="text-sm text-gray-200 leading-relaxed">{step.desc}</p>
+                              </div>
+                            </div>
+                            <div className="flex flex-wrap items-center gap-2">
                               {step.action === 'copy' && (
-                                <div className="mt-2 flex flex-wrap items-center gap-2 rounded-xl border border-white/10 bg-black/50 px-3 py-2">
-                                  <span className="text-lg font-bold text-white">{LINE_ID}</span>
-                                  <button
-                                    onClick={handleCopyLineId}
-                                    className="rounded-lg bg-gradient-to-r from-brand-gold via-amber-300 to-yellow-500 px-3 py-1.5 text-sm font-semibold text-brand-dark shadow-[0_12px_25px_rgba(255,184,0,0.35)] transition hover:scale-[1.02] w-full sm:w-auto text-center"
-                                  >
-                                    {isLineIdCopied ? '已複製' : '複製 ID'}
-                                  </button>
-                                </div>
+                                <button
+                                  onClick={handleCopyLineId}
+                                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-gold via-amber-300 to-yellow-500 px-3 py-1.5 text-sm font-semibold text-brand-dark shadow-[0_10px_22px_rgba(255,184,0,0.35)] transition hover:scale-[1.02] active:scale-95"
+                                >
+                                  {isLineIdCopied ? '已複製' : '一鍵複製 ID'}
+                                </button>
                               )}
-
+                              {step.action === 'open' && (
+                                <a
+                                  href="https://line.me/ti/p/@605ygnhp"
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-semibold text-white transition hover:border-brand-gold hover:text-brand-gold"
+                                >
+                                  打開 LINE 搜尋
+                                </a>
+                              )}
                               {step.action === 'qr' && (
                                 <a
                                   href={step.image}
                                   target="_blank"
                                   rel="noreferrer"
-                                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand-gold hover:text-brand-gold w-full sm:w-auto justify-center"
+                                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-semibold text-white transition hover:border-brand-gold hover:text-brand-gold"
                                 >
-                                  查看 / 保存 QR 碼
+                                  查看 / 保存 QR
                                 </a>
                               )}
-
                               {step.action === 'deep-link' && (
                                 <a
                                   href="https://line.me/ti/p/@605ygnhp"
                                   target="_blank"
                                   rel="noreferrer"
-                                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand-gold hover:text-brand-gold w-full sm:w-auto justify-center"
+                                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-semibold text-white transition hover:border-brand-gold hover:text-brand-gold"
                                 >
-                                  一鍵打開 LINE
+                                  一鍵跳轉 LINE
                                 </a>
                               )}
                             </div>
-
-                            <div className="relative h-36 sm:h-44 lg:h-52 overflow-hidden rounded-xl">
-                              <div className="absolute inset-0 pointer-events-none" />
+                            <div className="relative h-32 sm:h-36 md:h-40 overflow-hidden  ">
                               <Image
                                 src={step.image}
                                 alt={`${step.title} 示意圖`}
                                 fill
-                                sizes="(max-width: 640px) 95vw, (max-width: 1024px) 60vw, 320px"
+                                sizes="(max-width: 640px) 95vw, (max-width: 1024px) 45vw, 320px"
                                 className="object-contain"
                               />
                             </div>
@@ -1026,29 +1004,10 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
-
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <p className="text-xs text-gray-400">如無法複製，可手動輸入：{LINE_ID}</p>
-                  <div className="flex flex-wrap gap-3 w-full sm:w-auto">
-                    <button
-                      onClick={handleCopyLineId}
-                      className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand-gold hover:text-brand-gold w-full sm:w-auto"
-                    >
-                      {isLineIdCopied ? '已複製 ID' : '再次複製'}
-                    </button>
-                    <button
-                      onClick={closeJoinModal}
-                      className="rounded-full bg-gradient-to-r from-brand-gold via-amber-300 to-yellow-500 px-5 py-2 text-sm font-semibold text-brand-dark shadow-[0_12px_25px_rgba(255,184,0,0.35)] transition hover:scale-[1.02] w-full sm:w-auto"
-                    >
-                      完成
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         )}
-
         <Footer />
       </main>
     </div>

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Container } from '@/components/ui'
 
 export function Footer() {
@@ -15,24 +16,24 @@ export function Footer() {
           </div>
 
           <nav className="flex flex-col items-center gap-3 text-xs sm:flex-row sm:flex-wrap sm:justify-center md:flex-nowrap md:gap-4 lg:gap-6">
-            <a
-              href="#"
+            <Link
+              href="/privacy"
               className="inline-flex items-center rounded-full border border-white/10 px-4 py-1.5 transition-colors hover:border-brand-gold hover:text-brand-gold"
             >
               隱私政策
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
               className="inline-flex items-center rounded-full border border-white/10 px-4 py-1.5 transition-colors hover:border-brand-gold hover:text-brand-gold"
             >
               服務條款
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
               className="inline-flex items-center rounded-full border border-white/10 px-4 py-1.5 transition-colors hover:border-brand-gold hover:text-brand-gold"
             >
               用戶協議
-            </a>
+            </Link>
           </nav>
         </div>
       </Container>
