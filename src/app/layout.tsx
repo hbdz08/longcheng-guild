@@ -49,7 +49,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="zh-CN" className="overflow-x-hidden">
+    <html lang="zh-TW" className="overflow-x-hidden">
      
       <body className={`  overflow-x-hidden`}>
         <script
