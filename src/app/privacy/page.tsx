@@ -21,8 +21,9 @@ const sections = [
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-brand-dark/80 to-black text-gray-200">
-      <div className="relative mx-auto max-w-5xl px-6 py-14 md:py-18 space-y-10">
+    <div className="mobile-scroll">
+      <main className="min-h-screen bg-gradient-to-b from-black via-brand-dark/80 to-black text-gray-200 overflow-y-auto overscroll-y-auto">
+        <div className="relative mx-auto max-w-5xl px-6 py-14 md:py-18 space-y-10">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.06),transparent_45%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(217,119,6,0.08),transparent_50%)]" />
@@ -90,5 +91,6 @@ export default function PrivacyPage() {
         </div>
       </div>
     </main>
+    </div>
   )
 }

@@ -58,6 +58,15 @@
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
     }
+
+    /* 單頁容器（如隱私頁）可自行滾動 */
+    .mobile-scroll {
+      width: 100%;
+      min-height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
   }
 }
 
