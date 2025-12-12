@@ -11,7 +11,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.manmanyouhudong.com',
   },
-  keywords: ['遊戲公會', '龍成', 'MMORPG', '手遊', '網遊', '遊戲社區'],
+  keywords: [
+    '龍成遊戲公會', 
+    'Longcheng Guild', 
+    'MMORPG 攻略', 
+    '手遊儲值優惠',   // 高价值词：吸引想省钱的玩家
+    '遊戲代充',       // 高价值词
+    '遊戲掛機託管',   // 具体服务
+    '香港手遊公會', 
+    '台湾手遊公會',
+    '澳门手遊公會',    // 地域词 (针对繁体中文用户)
+    '網遊公會招募'
+  ],
   authors: [{ name: '龍成遊戲公會' }],
   icons: {
     icon: 'https://image.xixingwangluokeji.cn/image/favicon.ico',

@@ -309,7 +309,7 @@ export default function HomePage() {
             <div className="block md:hidden relative w-full h-full">
               <Image
                 src="https://image.xixingwangluokeji.cn/mobile/tv.png"
-                alt="Hero Mobile"
+                alt="龍成遊戲公會 - 專業MMORPG手遊國戰指揮現場 (手機版)"
                 fill
                 priority
                 className="object-contain object-top"
@@ -319,7 +319,7 @@ export default function HomePage() {
             <div className="hidden md:block relative w-full h-full">
               <Image
                 src="https://image.xixingwangluokeji.cn/desktop/tv@2x.png"
-                alt="Hero Desktop"
+                alt="龍成遊戲公會 - 專業MMORPG手遊國戰指揮現場 (電腦版)"
                 fill
                 priority
                 className="object-cover object-center"
