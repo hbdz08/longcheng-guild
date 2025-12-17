@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   },
   keywords: [
     '龍成遊戲公會', 
+    '龍成遊戲',
+    '龍成',
     'Longcheng Guild', 
     'MMORPG 攻略', 
     '手遊儲值優惠',   // 高价值词：吸引想省钱的玩家
@@ -25,9 +27,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: '龍成遊戲公會' }],
   icons: {
-    icon: 'https://image.xixingwangluokeji.cn/image/favicon.ico',
-    shortcut: 'https://image.xixingwangluokeji.cn/image/favicon.ico',
-    apple: 'https://image.xixingwangluokeji.cn/image/favicon.ico',
+    icon: [
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    shortcut: '/favicon.ico',
   },
   openGraph: {
     title: '龍成遊戲公會 | 好遊戲的搬運工',
@@ -37,9 +42,9 @@ export const metadata: Metadata = {
     url: 'https://www.manmanyouhudong.com',
     images: [
       {
-        url: 'https://image.xixingwangluokeji.cn/image/favicon.ico',
-        width: 48,
-        height: 48,
+        url: 'https://www.manmanyouhudong.com/icon-512.png',
+        width: 512,
+        height: 512,
         alt: '龍成遊戲公會',
       },
     ],
@@ -56,7 +61,7 @@ export default function RootLayout({
     '@type': 'Organization',
     name: '龍成遊戲公會',
     url: 'https://www.manmanyouhudong.com',
-    logo: 'https://image.xixingwangluokeji.cn/image/favicon.ico',
+    logo: 'https://www.manmanyouhudong.com/icon-512.png',
   }
 
   return (
